@@ -1,54 +1,50 @@
 'use client';
 
+import Script from 'next/script';
 import { useEffect } from 'react';
 
-// Replace with your actual Google Analytics Measurement ID
-// Get it from: analytics.google.com → Admin → Data Streams → your stream → Measurement ID
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+const GA_MEASUREMENT_ID = 'G-YRFBYXX3QR';
 
 export default function GoogleAnalytics() {
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return; // Skip if not configured
-
-    // Load gtag script
-    const script = document.createElement('script');
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    script.async = true;
-    document.head.appendChild(script);
-
-    // Initialize gtag
-    window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) {
-      (window as any).dataLayer.push(args);
-    }
-    gtag('js', new Date());
-    gtag('config', GA_MEASUREMENT_ID, {
-      page_path: window.location.hash || '/',
-    });
-
-    // Track hash changes for SPA routing
     const handleHashChange = () => {
-      gtag('config', GA_MEASUREMENT_ID, {
-        page_path: window.location.hash || '/',
-      });
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('config', GA_MEASUREMENT_ID, {
+          page_path: window.location.hash || '/',
+        });
+      }
     };
     window.addEventListener('hashchange', handleHashChange);
-
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  return null;
+  if (!GA_MEASUREMENT_ID) return null;
+
+  return (
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_MEASUREMENT_ID}', {
+            page_path: window.location.hash || '/',
+          });
+        `}
+      </Script>
+    </>
+  );
 }
 
-// Helper to track custom events
 export function trackEvent(action: string, category: string, label?: string, value?: number) {
   if (typeof window === 'undefined') return;
-  if (GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
+  if (!(window as any).gtag) return;
 
-  (window as any).gtag?.('event', action, {
+  (window as any).gtag('event', action, {
     event_category: category,
     event_label: label,
     value: value,
