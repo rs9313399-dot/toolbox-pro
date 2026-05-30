@@ -99,6 +99,25 @@ export default function RootLayout({
           crossOrigin="anonymous"
           suppressHydrationWarning
         />
+        {/* Google Analytics Script - Direct in head */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-YRFBYXX3QR"
+          suppressHydrationWarning
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-YRFBYXX3QR', {
+                page_path: window.location.hash || '/',
+              });
+            `,
+          }}
+          suppressHydrationWarning
+        />
       </head>
       <body
         className={`${inter.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
