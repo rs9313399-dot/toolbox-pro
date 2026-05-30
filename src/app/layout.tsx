@@ -5,6 +5,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import JsonLdSchema from "@/components/JsonLdSchema";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -128,6 +129,7 @@ export default function RootLayout({
         {children}
         <Toaster />
 	<Analytics />
+	<SpeedInsights />
       </body>
     </html>
   );
