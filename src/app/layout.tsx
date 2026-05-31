@@ -4,6 +4,7 @@ import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import JsonLdSchema from "@/components/JsonLdSchema";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -99,6 +100,7 @@ export default function RootLayout({
         <JsonLdSchema />
         {children}
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
