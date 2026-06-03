@@ -34,6 +34,7 @@ import PdfToText from '@/components/tools/PdfToText';
 import PdfRearrange from '@/components/tools/PdfRearrange';
 import PdfMetadataEditor from '@/components/tools/PdfMetadataEditor';
 import PdfCrop from '@/components/tools/PdfCrop';
+import PdfToolsPage from '@/components/PdfToolsPage';
 import PrivacyPolicy from '@/components/PrivacyPolicy';
 import AboutPage from '@/components/AboutPage';
 import TermsOfService from '@/components/TermsOfService';
@@ -320,6 +321,9 @@ function Router({ hash, navigate }: { hash: string; navigate: (h: string) => voi
   if (route === '#/tools/pdf-rearrange') return <PdfRearrange onNavigate={navigate} />;
   if (route === '#/tools/pdf-metadata-editor') return <PdfMetadataEditor onNavigate={navigate} />;
   if (route === '#/tools/pdf-crop') return <PdfCrop onNavigate={navigate} />;
+
+  // PDF Tools Hub Page
+  if (route === '#/pdf-tools') return <PdfToolsPage onNavigate={navigate} />;
 
   // Blog listing
   if (route === '#/blog') {

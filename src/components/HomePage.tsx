@@ -37,6 +37,7 @@ import {
   FileSearch,
   Crop,
   File,
+  Sparkles,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import AdPlaceholder from './AdPlaceholder';
@@ -370,7 +371,7 @@ const categories = [
     name: 'PDF Tools',
     icon: File,
     count: 14,
-    toolHash: '#/tools/pdf-merge',
+    toolHash: '#/pdf-tools',
     color: 'text-orange-400',
     bg: 'bg-orange-500/10',
     border: 'border-orange-500/20',
@@ -504,6 +505,71 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 {benefit}
               </span>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════ PDF TOOLS HUB ═══════════════════ */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500/10 via-[#8A2BE2]/5 to-orange-500/10 border border-orange-500/20 p-8 sm:p-12">
+          {/* Background glow */}
+          <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-orange-500/10 blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full bg-[#8A2BE2]/8 blur-[100px] pointer-events-none" />
+
+          <div className="relative flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+            {/* Left content */}
+            <div className="flex-1 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-5">
+                <Sparkles className="h-3.5 w-3.5 text-orange-400" />
+                <span className="text-xs font-semibold text-orange-400">NEW — PDF Tools Suite</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 tracking-tight">
+                All PDF Tools <span className="text-orange-400">One Place</span>
+              </h2>
+              <p className="text-[#AAAAAA] text-base sm:text-lg leading-relaxed mb-6 max-w-lg">
+                Merge, split, compress, rotate, watermark, protect, unlock, add page numbers, crop, rearrange, extract text, edit metadata, convert images — 14 powerful PDF tools, all free and private.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <button
+                  onClick={() => onNavigate('#/pdf-tools')}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-white font-bold text-sm bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-all duration-300 animate-btn-glow"
+                >
+                  <File className="h-5 w-5" />
+                  <span>Open PDF Tools</span>
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+                <div className="flex items-center gap-3 text-sm text-[#888888]">
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-orange-400" /> 14 Tools</span>
+                  <span className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-orange-400" /> 100% Private</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Mini tool grid */}
+            <div className="flex-shrink-0 grid grid-cols-3 sm:grid-cols-4 gap-2 max-w-sm">
+              {[
+                { name: 'Merge', icon: FilePlus, color: 'text-orange-400 bg-orange-500/10 border-orange-500/20' },
+                { name: 'Split', icon: Scissors, color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
+                { name: 'Compress', icon: FileDown, color: 'text-green-400 bg-green-500/10 border-green-500/20' },
+                { name: 'Rotate', icon: RotateCw, color: 'text-blue-400 bg-blue-500/10 border-blue-500/20' },
+                { name: 'Watermark', icon: Droplets, color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20' },
+                { name: 'Unlock', icon: Unlock, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
+                { name: 'Protect', icon: Lock, color: 'text-red-400 bg-red-500/10 border-red-500/20' },
+                { name: 'Numbers', icon: Hash, color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20' },
+                { name: 'To Text', icon: FileText, color: 'text-teal-400 bg-teal-500/10 border-teal-500/20' },
+                { name: 'Rearrange', icon: ArrowUpDown, color: 'text-purple-400 bg-purple-500/10 border-purple-500/20' },
+                { name: 'Metadata', icon: FileSearch, color: 'text-sky-400 bg-sky-500/10 border-sky-500/20' },
+                { name: 'Crop', icon: Crop, color: 'text-lime-400 bg-lime-500/10 border-lime-500/20' },
+              ].map((t) => (
+                <div
+                  key={t.name}
+                  className={`flex flex-col items-center gap-1.5 p-3 rounded-xl ${t.color} border cursor-default`}
+                >
+                  <t.icon className="h-5 w-5" />
+                  <span className="text-[10px] font-medium text-[#AAAAAA]">{t.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

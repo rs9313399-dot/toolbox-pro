@@ -45,8 +45,8 @@ const relatedTools = [
   },
   {
     name: 'PDF Protect',
-    hash: '#/tools/pdf-unlock',
-    description: 'Unlock or remove PDF password protection.',
+    hash: '#/tools/pdf-protect',
+    description: 'Add password protection to your PDF files.',
   },
   {
     name: 'PDF Merge',

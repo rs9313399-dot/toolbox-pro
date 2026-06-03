@@ -92,6 +92,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        {/* Tell Dark Reader extension to NOT modify this page — site is already dark */}
+        <meta name="darkreader-lock" suppressHydrationWarning />
         {/* Google AdSense Verification - Replace ca-pub-XXXXXXXXXXXXXXXX with your real publisher ID */}
         <meta
           name="google-adsense-account"

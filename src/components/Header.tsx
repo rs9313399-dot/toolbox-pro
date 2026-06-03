@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, File } from 'lucide-react';
 import Image from 'next/image';
 
 const toolCategories = [
@@ -140,6 +140,19 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
               Home
             </button>
 
+            {/* ★ PDF Tools Special Button ★ */}
+            <button
+              onClick={() => handleNav('#/pdf-tools')}
+              className={`flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 ${
+                currentHash === '#/pdf-tools'
+                  ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
+                  : 'text-orange-400 hover:bg-orange-500/10 border border-transparent hover:border-orange-500/20'
+              }`}
+            >
+              <File className="h-4 w-4" />
+              PDF Tools
+            </button>
+
             {/* Tools Dropdown */}
             <div className="relative">
               <button
@@ -248,6 +261,19 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
             }`}
           >
             Home
+          </button>
+
+          {/* ★ PDF Tools Special Button (Mobile) ★ */}
+          <button
+            onClick={() => handleNav('#/pdf-tools')}
+            className={`flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold rounded-lg transition-all ${
+              currentHash === '#/pdf-tools'
+                ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
+                : 'text-orange-400 hover:bg-orange-500/10 border border-orange-500/10'
+            }`}
+          >
+            <File className="h-4 w-4" />
+            PDF Tools
           </button>
 
           <div className="py-1">
