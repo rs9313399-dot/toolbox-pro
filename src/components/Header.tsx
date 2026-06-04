@@ -1,35 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, File } from 'lucide-react';
+import { Menu, X, ChevronDown, Crown } from 'lucide-react';
 import Image from 'next/image';
 
 const toolCategories = [
   {
-    group: 'PDF Tools',
-    items: [
-      { name: 'PDF Merge', hash: '#/tools/pdf-merge', desc: 'Merge multiple PDFs' },
-      { name: 'PDF Split', hash: '#/tools/pdf-split', desc: 'Extract pages from PDF' },
-      { name: 'PDF Compress', hash: '#/tools/pdf-compress', desc: 'Reduce PDF file size' },
-      { name: 'PDF Rotate', hash: '#/tools/pdf-rotate', desc: 'Rotate PDF pages' },
-      { name: 'PDF Watermark', hash: '#/tools/pdf-watermark', desc: 'Add text watermark' },
-      { name: 'PDF Unlock', hash: '#/tools/pdf-unlock', desc: 'Remove PDF password' },
-      { name: 'PDF Protect', hash: '#/tools/pdf-protect', desc: 'Add password to PDF' },
-      { name: 'PDF Page Numbers', hash: '#/tools/pdf-page-numbers', desc: 'Add page numbers' },
-      { name: 'PDF to Text', hash: '#/tools/pdf-to-text', desc: 'Extract text from PDF' },
-      { name: 'PDF to Image', hash: '#/tools/pdf-to-image', desc: 'PDF to images' },
-      { name: 'PDF Rearrange', hash: '#/tools/pdf-rearrange', desc: 'Reorder PDF pages' },
-      { name: 'PDF Metadata', hash: '#/tools/pdf-metadata-editor', desc: 'Edit PDF metadata' },
-      { name: 'PDF Crop', hash: '#/tools/pdf-crop', desc: 'Crop PDF pages' },
-      { name: 'Image to PDF', hash: '#/tools/image-to-pdf', desc: 'Images to PDF' },
-    ],
-  },
-  {
-    group: 'Image Tools',
+    group: 'Image & PDF',
     items: [
       { name: 'Image Compressor', hash: '#/tools/image-compressor', desc: 'Compress images' },
       { name: 'Image Resizer', hash: '#/tools/image-resizer', desc: 'Resize images' },
       { name: 'Background Remover', hash: '#/tools/background-remover', desc: 'Remove backgrounds' },
+      { name: 'Image to PDF', hash: '#/tools/image-to-pdf', desc: 'Images to PDF' },
+      { name: 'PDF to Image', hash: '#/tools/pdf-to-image', desc: 'PDF to images' },
     ],
   },
   {
@@ -64,6 +47,7 @@ const allTools = toolCategories.flatMap(c => c.items);
 const navLinks = [
   { name: 'Home', hash: '#/' },
   { name: 'Blog', hash: '#/blog' },
+  { name: 'Pricing', hash: '#/pricing' },
   { name: 'Contact', hash: '#/contact' },
 ];
 
@@ -140,19 +124,6 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
               Home
             </button>
 
-            {/* ★ PDF Tools Special Button ★ */}
-            <button
-              onClick={() => handleNav('#/pdf-tools')}
-              className={`flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 ${
-                currentHash === '#/pdf-tools'
-                  ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
-                  : 'text-orange-400 hover:bg-orange-500/10 border border-transparent hover:border-orange-500/20'
-              }`}
-            >
-              <File className="h-4 w-4" />
-              PDF Tools
-            </button>
-
             {/* Tools Dropdown */}
             <div className="relative">
               <button
@@ -223,10 +194,11 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
 
             {/* CTA */}
             <button
-              onClick={() => handleNav('#/tools/password-generator')}
-              className="ml-3 cta-primary px-5 py-2 rounded-xl text-white text-sm font-semibold"
+              onClick={() => handleNav('#/pricing')}
+              className="ml-3 cta-primary px-5 py-2 rounded-xl text-white text-sm font-semibold inline-flex items-center gap-1.5"
             >
-              <span>Try Free</span>
+              <Crown className="h-3.5 w-3.5" />
+              <span>Go Pro</span>
             </button>
           </div>
 
@@ -261,19 +233,6 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
             }`}
           >
             Home
-          </button>
-
-          {/* ★ PDF Tools Special Button (Mobile) ★ */}
-          <button
-            onClick={() => handleNav('#/pdf-tools')}
-            className={`flex w-full items-center gap-2 px-4 py-3 text-sm font-semibold rounded-lg transition-all ${
-              currentHash === '#/pdf-tools'
-                ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
-                : 'text-orange-400 hover:bg-orange-500/10 border border-orange-500/10'
-            }`}
-          >
-            <File className="h-4 w-4" />
-            PDF Tools
           </button>
 
           <div className="py-1">
@@ -318,10 +277,11 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
 
           <div className="pt-2 px-4">
             <button
-              onClick={() => handleNav('#/tools/password-generator')}
-              className="w-full cta-primary py-3 rounded-xl text-white text-sm font-semibold"
+              onClick={() => handleNav('#/pricing')}
+              className="w-full cta-primary py-3 rounded-xl text-white text-sm font-semibold inline-flex items-center justify-center gap-1.5"
             >
-              <span>Try Free Tools</span>
+              <Crown className="h-3.5 w-3.5" />
+              <span>Go Pro</span>
             </button>
           </div>
         </div>

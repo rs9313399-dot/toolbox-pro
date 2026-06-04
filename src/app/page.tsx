@@ -22,23 +22,11 @@ import ImageResizer from '@/components/tools/ImageResizer';
 import BackgroundRemover from '@/components/tools/BackgroundRemover';
 import JsonFormatter from '@/components/tools/JsonFormatter';
 import Base64Encoder from '@/components/tools/Base64Encoder';
-import PdfMerge from '@/components/tools/PdfMerge';
-import PdfSplit from '@/components/tools/PdfSplit';
-import PdfCompress from '@/components/tools/PdfCompress';
-import PdfRotate from '@/components/tools/PdfRotate';
-import PdfWatermark from '@/components/tools/PdfWatermark';
-import PdfUnlock from '@/components/tools/PdfUnlock';
-import PdfPageNumbers from '@/components/tools/PdfPageNumbers';
-import PdfProtect from '@/components/tools/PdfProtect';
-import PdfToText from '@/components/tools/PdfToText';
-import PdfRearrange from '@/components/tools/PdfRearrange';
-import PdfMetadataEditor from '@/components/tools/PdfMetadataEditor';
-import PdfCrop from '@/components/tools/PdfCrop';
-import PdfToolsPage from '@/components/PdfToolsPage';
 import PrivacyPolicy from '@/components/PrivacyPolicy';
 import AboutPage from '@/components/AboutPage';
 import TermsOfService from '@/components/TermsOfService';
 import DisclaimerPage from '@/components/DisclaimerPage';
+import PricingPage from '@/components/PricingPage';
 
 /* ────────────────────────────────────────────
    Blog data — shared across listing + detail
@@ -189,78 +177,6 @@ const blogPosts = [
     content: `Professional product photos with clean backgrounds are essential for e-commerce success.\n\n## Why Clean Backgrounds Matter\n\nProducts on clean, white or transparent backgrounds have higher conversion rates across major e-commerce platforms.\n\n## Shooting Tips for Easy Background Removal\n\n1. **Use a solid background** - White, black, or green screen backgrounds are easiest to remove.\n\n2. **Ensure good lighting** - Even, diffused lighting eliminates harsh shadows.\n\n3. **Maintain contrast** - Dark products on light backgrounds (or vice versa) work best.\n\n4. **Keep the background uniform** - Stretch fabric backgrounds tight and iron out wrinkles.\n\n## Browser-Based Background Removal\n\n- Color-based thresholding works great for solid backgrounds\n- Adjustable tolerance controls how aggressively the background is removed\n- Instant preview with before/after comparison\n- Transparent PNG output ready for use\n\n## After Removal: Next Steps\n\n- Place the product on a white background for Amazon/eBay\n- Add a custom gradient for social media\n- Create composite images with multiple products\n\nTry our Background Remover tool to create professional product images instantly!`,
     author: 'Alex Rivera',
   },
-  {
-    id: 13,
-    slug: 'merge-pdf-files-online-free',
-    title: 'How to Merge PDF Files Online for Free: Complete Guide',
-    excerpt: 'Learn how to combine multiple PDF documents into a single file using free online tools. No software installation needed, 100% private.',
-    date: '2025-10-25',
-    readTime: '7 min',
-    category: 'PDF Tools',
-    image: '/blog/merge-pdf-files-online-free.png',
-    content: `Merging PDF files is one of the most common tasks people need to do with documents. Whether you are combining contracts, merging reports, or consolidating study materials, having a reliable PDF merger is essential.\n\n## Why Merge PDFs?\n\nCombining multiple PDF files into one document streamlines organization, makes sharing easier, and creates a professional presentation. Instead of sending 10 separate files, you can send one cohesive document.\n\n## Methods to Merge PDFs\n\n**1. Online Tools** — Browser-based mergers like ToolBox Pro process files locally in your browser. Your documents never leave your device, ensuring complete privacy.\n\n**2. Desktop Software** — Programs like Adobe Acrobat offer robust merging but require installation and often a paid subscription.\n\n**3. Command Line** — Tools like pdftk or Ghostscript offer powerful merging for technical users comfortable with terminal commands.\n\n## Best Practices for Merging\n\n1. **Organize files first** — Arrange your PDFs in the desired order before merging to avoid having to rearrange later.\n\n2. **Check file sizes** — Merging many large PDFs can create very large files. Consider compressing individual PDFs first.\n\n3. **Verify page order** — After merging, always scroll through the result to confirm pages appear in the correct sequence.\n\n4. **Remove duplicate pages** — Check for any duplicate or unnecessary pages before merging.\n\n## Privacy Considerations\n\nWhen merging sensitive documents like contracts or financial records, choose tools that process everything in your browser. Server-based tools may store temporary copies of your files on their servers, which could be a privacy risk.\n\nTry our free PDF Merge tool to combine your documents instantly and privately!`,
-    author: 'ToolBox Pro Team',
-  },
-  {
-    id: 14,
-    slug: 'compress-pdf-reduce-file-size',
-    title: 'How to Compress PDF Files and Reduce File Size',
-    excerpt: 'Discover effective methods to reduce PDF file sizes without losing quality. Learn compression techniques that keep your documents sharp.',
-    date: '2025-10-10',
-    readTime: '8 min',
-    category: 'PDF Tools',
-    image: '/blog/compress-pdf-reduce-file-size.png',
-    content: `Large PDF files can cause problems — they are slow to upload, difficult to email, and take up excessive storage space. Learning how to compress PDFs effectively is a valuable skill for anyone who works with digital documents.\n\n## Why PDFs Get Large\n\nPDFs can grow large for several reasons: embedded high-resolution images, unused font data, redundant objects, metadata, and embedded multimedia. Understanding the cause helps you choose the right compression strategy.\n\n## Compression Techniques\n\n**1. Remove Unused Objects** — PDF files can contain objects that are not referenced anywhere in the document. Removing these can significantly reduce file size.\n\n**2. Optimize Image Compression** — Images are usually the largest component of a PDF. Re-compressing them at an appropriate quality level can yield dramatic size reductions.\n\n**3. Strip Metadata** — Title, author, keywords, and other metadata add bytes. While usually small, stripping them contributes to overall reduction.\n\n**4. Use Object Streams** — Modern PDF compression uses object streams to group multiple objects together, reducing overhead.\n\n## Quality vs Size Trade-off\n\nThe key to successful compression is finding the right balance between file size and visual quality. For documents that are primarily text, aggressive compression often works well with no visible quality loss. For image-heavy documents like presentations or photo albums, more careful compression is needed.\n\n## Browser-Based Compression\n\nOnline tools like ToolBox Pro compress PDFs directly in your browser — no upload to servers, no privacy concerns, and instant results. The compression happens on your device using JavaScript, so your sensitive documents stay completely private.\n\nCompress your PDFs for free with our PDF Compress tool!`,
-    author: 'Sarah Mitchell',
-  },
-  {
-    id: 15,
-    slug: 'add-watermark-to-pdf-guide',
-    title: 'How to Add a Watermark to PDF Documents',
-    excerpt: 'Protect your intellectual property by adding text or image watermarks to your PDF files. Step-by-step guide with tips for professional results.',
-    date: '2025-09-22',
-    readTime: '6 min',
-    category: 'PDF Tools',
-    image: '/blog/add-watermark-to-pdf-guide.png',
-    content: `Watermarking your PDF documents is an effective way to protect your intellectual property, indicate document status, or brand your materials. Whether you need to mark a document as "CONFIDENTIAL" or add your company logo, watermarks provide visual identification.\n\n## Types of Watermarks\n\n**Text Watermarks** — The most common type. Words like "CONFIDENTIAL," "DRAFT," "SAMPLE," or "DO NOT COPY" are overlaid on each page, typically at an angle for maximum visibility without obscuring content.\n\n**Image Watermarks** — Company logos or custom designs placed subtly in the background. These are more complex but offer better branding.\n\n## Best Practices\n\n1. **Use appropriate opacity** — A watermark should be visible but not interfere with reading the document. 20-30% opacity is usually ideal.\n\n2. **Choose diagonal placement** — Diagonal watermarks (typically 45 degrees) are harder to remove and cover more of the page area.\n\n3. **Select a subtle color** — Light gray works well for most documents. Use red only for critical notices like "CONFIDENTIAL."\n\n4. **Keep font size proportional** — Too small and it is easy to crop out. Too large and it obscures content. 40-60pt is usually appropriate for A4 documents.\n\n5. **Apply to all pages** — For maximum protection, watermark every page, not just the first one.\n\n## Common Use Cases\n\n- Legal documents marked as confidential\n- Draft documents under review\n- Educational materials with copyright notices\n- Business proposals with company branding\n- Sample documents to prevent unauthorized use\n\nAdd professional watermarks to your PDFs with our free PDF Watermark tool!`,
-    author: 'David Chen',
-  },
-  {
-    id: 16,
-    slug: 'split-pdf-extract-pages-guide',
-    title: 'How to Split a PDF and Extract Specific Pages',
-    excerpt: 'Learn how to extract specific pages from large PDF documents. Save only the pages you need without expensive software.',
-    date: '2025-09-05',
-    readTime: '7 min',
-    category: 'PDF Tools',
-    image: '/blog/split-pdf-extract-pages-guide.png',
-    content: `Sometimes you only need a few pages from a large PDF document. Whether it is extracting a single chapter from a textbook, pulling specific contract pages, or separating individual invoices, PDF splitting saves time and storage space.\n\n## When to Split PDFs\n\n- Extracting relevant pages from a long report to share with a colleague\n- Separating individual forms from a combined document\n- Removing sensitive pages before sharing\n- Creating custom study materials from multiple sources\n- Extracting just the pages you need for a presentation\n\n## Page Selection Methods\n\n**Individual Pages** — Specify exact page numbers like "1, 5, 9, 12" to extract only those specific pages.\n\n**Page Ranges** — Use ranges like "3-7" to extract a consecutive sequence of pages. Most tools also support combining ranges: "1-3, 7, 10-15."\n\n**Quick Selections** — Many tools offer shortcuts for common selections like "all even pages," "all odd pages," "first page only," or "last page only."\n\n## Tips for Better Results\n\n1. **Always verify page numbers** — Open the PDF first and note the exact page numbers you need before extracting.\n\n2. **Check for bookmarks** — If the PDF has a table of contents with page links, use those to identify the correct pages.\n\n3. **Preserve file names** — When extracting pages, use descriptive names that indicate the content rather than generic names like "extracted.pdf."\n\n4. **Combine with merging** — Extract pages from multiple PDFs, then merge them into a single custom document.\n\nSplit your PDFs for free with our PDF Split tool — all processing happens in your browser!`,
-    author: 'Michael Torres',
-  },
-  {
-    id: 17,
-    slug: 'protect-pdf-with-password-guide',
-    title: 'How to Password Protect Your PDF Documents',
-    excerpt: 'Secure sensitive PDF documents with password protection. Learn about encryption levels, best practices, and how to share protected files safely.',
-    date: '2025-08-18',
-    readTime: '8 min',
-    category: 'Security',
-    image: '/blog/protect-pdf-with-password-guide.png',
-    content: `In an age of data breaches and privacy concerns, protecting sensitive PDF documents with passwords is more important than ever. Financial statements, legal contracts, medical records, and personal identification documents all deserve an extra layer of security.\n\n## Why Password-Protect PDFs?\n\n- **Compliance** — Many regulations (GDPR, HIPAA, SOX) require sensitive documents to be encrypted or access-controlled.\n- **Privacy** — Prevent unauthorized viewing of personal or confidential information.\n- **Control** — Restrict who can open, edit, print, or copy content from your documents.\n- **Professionalism** — Sending password-protected documents signals that you take security seriously.\n\n## Types of PDF Encryption\n\n**User Password (Document Open Password)** — Required to open and view the PDF. Without this password, the document cannot be opened at all.\n\n**Owner Password (Permissions Password)** — Controls what users can do with the document once opened (print, copy, edit, etc.). Even without this password, the document can be viewed.\n\n## Best Practices for PDF Passwords\n\n1. **Use strong passwords** — At least 12 characters with a mix of uppercase, lowercase, numbers, and symbols.\n\n2. **Share passwords separately** — Never send the password in the same email as the protected document. Use a different communication channel.\n\n3. **Avoid common passwords** — Do not use birthdays, names, or simple sequences.\n\n4. **Keep a record** — Use a password manager to store your document passwords securely.\n\n5. **Set expiration when possible** — Some tools allow you to set time-limited access to documents.\n\n## Browser-Based Protection\n\nFor basic protection needs, browser-based tools can add metadata-based protection to your PDFs. For full encryption, desktop tools like Adobe Acrobat or LibreOffice offer stronger security options.\n\nProtect your PDFs with our PDF Protect tool, or remove existing passwords with our PDF Unlock tool!`,
-    author: 'Priya Sharma',
-  },
-  {
-    id: 18,
-    slug: 'pdf-tools-students-productivity',
-    title: '10 PDF Tools Every Student Needs for Better Productivity',
-    excerpt: 'Essential PDF tools that help students manage coursework, take notes, and prepare documents for submission more efficiently.',
-    date: '2025-08-01',
-    readTime: '9 min',
-    category: 'Productivity',
-    image: '/blog/pdf-tools-students-productivity.png',
-    content: `Students deal with PDFs constantly — lecture notes, research papers, assignments, textbooks, and administrative forms. Having the right PDF tools can save hours of frustration and dramatically improve productivity throughout the academic year.\n\n## Essential PDF Tools for Students\n\n**1. PDF Merge** — Combine multiple lecture slides, handouts, and reading materials into a single organized document. No more juggling 15 separate files for one course.\n\n**2. PDF Split** — Extract specific chapters from textbooks or individual pages from lengthy study guides. Carry only what you need on your tablet or laptop.\n\n**3. PDF Compress** — Reduce file sizes for email submissions. Many universities have strict attachment size limits, and compressed PDFs upload faster to learning management systems.\n\n**4. PDF Rotate** — Fix sideways scanned documents or incorrectly oriented lecture slides. A quick rotation saves you from tilting your head for an entire study session.\n\n**5. PDF Watermark** — Mark your draft assignments with "DRAFT" to prevent accidental submission, or add your name to shared study notes.\n\n**6. PDF Page Numbers** — Add page numbers to lengthy study materials so you can easily reference specific sections during discussions or exams.\n\n**7. PDF to Text** — Extract text from scanned PDFs or image-based documents for quoting in essays or running through plagiarism checkers.\n\n**8. PDF Rearrange** — Organize your notes and materials in a logical order that matches your study plan or the course syllabus.\n\n**9. Image to PDF** — Convert photos of whiteboard notes, handwritten solutions, or diagrams into clean PDF documents for easy sharing and storage.\n\n**10. PDF Crop** — Remove excessive margins from scanned documents or crop specific sections of diagrams and charts for inclusion in your assignments.\n\n## Study Workflow Tips\n\n- Merge all week's lecture materials into one PDF for easy offline access\n- Extract relevant pages from research papers using the Split tool\n- Add page numbers to your study guides for quick reference\n- Compress assignment PDFs before uploading to meet size limits\n- Watermark shared notes with your study group name\n\nAll these tools are available for free on ToolBox Pro — no signup, no installation, completely private!`,
-    author: 'Emily Brooks',
-  },
 ];
 
 function useHashRouter() {
@@ -308,22 +224,6 @@ function Router({ hash, navigate }: { hash: string; navigate: (h: string) => voi
   if (route === '#/tools/background-remover') return <BackgroundRemover onNavigate={navigate} />;
   if (route === '#/tools/json-formatter') return <JsonFormatter onNavigate={navigate} />;
   if (route === '#/tools/base64-encoder') return <Base64Encoder onNavigate={navigate} />;
-  // PDF Tools
-  if (route === '#/tools/pdf-merge') return <PdfMerge onNavigate={navigate} />;
-  if (route === '#/tools/pdf-split') return <PdfSplit onNavigate={navigate} />;
-  if (route === '#/tools/pdf-compress') return <PdfCompress onNavigate={navigate} />;
-  if (route === '#/tools/pdf-rotate') return <PdfRotate onNavigate={navigate} />;
-  if (route === '#/tools/pdf-watermark') return <PdfWatermark onNavigate={navigate} />;
-  if (route === '#/tools/pdf-unlock') return <PdfUnlock onNavigate={navigate} />;
-  if (route === '#/tools/pdf-page-numbers') return <PdfPageNumbers onNavigate={navigate} />;
-  if (route === '#/tools/pdf-protect') return <PdfProtect onNavigate={navigate} />;
-  if (route === '#/tools/pdf-to-text') return <PdfToText onNavigate={navigate} />;
-  if (route === '#/tools/pdf-rearrange') return <PdfRearrange onNavigate={navigate} />;
-  if (route === '#/tools/pdf-metadata-editor') return <PdfMetadataEditor onNavigate={navigate} />;
-  if (route === '#/tools/pdf-crop') return <PdfCrop onNavigate={navigate} />;
-
-  // PDF Tools Hub Page
-  if (route === '#/pdf-tools') return <PdfToolsPage onNavigate={navigate} />;
 
   // Blog listing
   if (route === '#/blog') {
@@ -359,6 +259,11 @@ function Router({ hash, navigate }: { hash: string; navigate: (h: string) => voi
   // Contact
   if (route === '#/contact') {
     return <ContactPage />;
+  }
+
+  // Pricing
+  if (route === '#/pricing') {
+    return <PricingPage onNavigate={navigate} />;
   }
 
   // 404

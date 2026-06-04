@@ -25,18 +25,7 @@ import {
   Scissors,
   Braces,
   Binary,
-  FilePlus,
-  FileDown,
-  RotateCw,
-  Droplets,
-  Unlock,
-  Lock,
-  Hash,
-  FileText,
-  ArrowUpDown,
-  FileSearch,
-  Crop,
-  File,
+  Crown,
   Sparkles,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -58,6 +47,7 @@ const tools = [
     color: 'text-purple-400',
     bg: 'bg-purple-500/10',
     border: 'border-purple-500/20',
+    premium: false,
   },
   {
     name: 'Word Counter',
@@ -68,6 +58,7 @@ const tools = [
     color: 'text-cyan-400',
     bg: 'bg-cyan-500/10',
     border: 'border-cyan-500/20',
+    premium: false,
   },
   {
     name: 'Image Compressor',
@@ -78,6 +69,7 @@ const tools = [
     color: 'text-green-400',
     bg: 'bg-green-500/10',
     border: 'border-green-500/20',
+    premium: false,
   },
   {
     name: 'YouTube Thumbnail',
@@ -88,6 +80,7 @@ const tools = [
     color: 'text-red-400',
     bg: 'bg-red-500/10',
     border: 'border-red-500/20',
+    premium: false,
   },
   {
     name: 'Instagram Reel',
@@ -98,6 +91,7 @@ const tools = [
     color: 'text-pink-400',
     bg: 'bg-pink-500/10',
     border: 'border-pink-500/20',
+    premium: false,
   },
   {
     name: 'Image to PDF',
@@ -108,6 +102,7 @@ const tools = [
     color: 'text-orange-400',
     bg: 'bg-orange-500/10',
     border: 'border-orange-500/20',
+    premium: true,
   },
   {
     name: 'PDF to Image',
@@ -118,6 +113,7 @@ const tools = [
     color: 'text-amber-400',
     bg: 'bg-amber-500/10',
     border: 'border-amber-500/20',
+    premium: true,
   },
   {
     name: 'QR Code Generator',
@@ -128,6 +124,7 @@ const tools = [
     color: 'text-indigo-400',
     bg: 'bg-indigo-500/10',
     border: 'border-indigo-500/20',
+    premium: false,
   },
   {
     name: 'URL Shortener',
@@ -138,6 +135,7 @@ const tools = [
     color: 'text-blue-400',
     bg: 'bg-blue-500/10',
     border: 'border-blue-500/20',
+    premium: true,
   },
   {
     name: 'Text to Speech',
@@ -148,6 +146,7 @@ const tools = [
     color: 'text-teal-400',
     bg: 'bg-teal-500/10',
     border: 'border-teal-500/20',
+    premium: false,
   },
   {
     name: 'Speech to Text',
@@ -158,6 +157,7 @@ const tools = [
     color: 'text-sky-400',
     bg: 'bg-sky-500/10',
     border: 'border-sky-500/20',
+    premium: false,
   },
   {
     name: 'Image Resizer',
@@ -168,6 +168,7 @@ const tools = [
     color: 'text-lime-400',
     bg: 'bg-lime-500/10',
     border: 'border-lime-500/20',
+    premium: true,
   },
   {
     name: 'Background Remover',
@@ -178,6 +179,7 @@ const tools = [
     color: 'text-rose-400',
     bg: 'bg-rose-500/10',
     border: 'border-rose-500/20',
+    premium: true,
   },
   {
     name: 'JSON Formatter',
@@ -188,6 +190,7 @@ const tools = [
     color: 'text-yellow-400',
     bg: 'bg-yellow-500/10',
     border: 'border-yellow-500/20',
+    premium: false,
   },
   {
     name: 'Base64 Encoder',
@@ -198,126 +201,7 @@ const tools = [
     color: 'text-violet-400',
     bg: 'bg-violet-500/10',
     border: 'border-violet-500/20',
-  },
-  {
-    name: 'PDF Merge',
-    hash: '#/tools/pdf-merge',
-    icon: FilePlus,
-    description:
-      'Merge multiple PDF files into one document. Upload, reorder, and combine PDFs instantly in your browser.',
-    color: 'text-orange-400',
-    bg: 'bg-orange-500/10',
-    border: 'border-orange-500/20',
-  },
-  {
-    name: 'PDF Split',
-    hash: '#/tools/pdf-split',
-    icon: Scissors,
-    description:
-      'Extract specific pages from a PDF. Select pages by number or range and download as a new document.',
-    color: 'text-amber-400',
-    bg: 'bg-amber-500/10',
-    border: 'border-amber-500/20',
-  },
-  {
-    name: 'PDF Compress',
-    hash: '#/tools/pdf-compress',
-    icon: FileDown,
-    description:
-      'Reduce PDF file size by stripping unused data and optimizing structure. Keep quality while saving space.',
-    color: 'text-green-400',
-    bg: 'bg-green-500/10',
-    border: 'border-green-500/20',
-  },
-  {
-    name: 'PDF Rotate',
-    hash: '#/tools/pdf-rotate',
-    icon: RotateCw,
-    description:
-      'Rotate PDF pages by 90, 180, or 270 degrees. Apply to all pages or specific pages only.',
-    color: 'text-blue-400',
-    bg: 'bg-blue-500/10',
-    border: 'border-blue-500/20',
-  },
-  {
-    name: 'PDF Watermark',
-    hash: '#/tools/pdf-watermark',
-    icon: Droplets,
-    description:
-      'Add custom text watermarks to your PDF. Adjust font size, opacity, color, and position.',
-    color: 'text-cyan-400',
-    bg: 'bg-cyan-500/10',
-    border: 'border-cyan-500/20',
-  },
-  {
-    name: 'PDF Unlock',
-    hash: '#/tools/pdf-unlock',
-    icon: Unlock,
-    description:
-      'Remove password protection from PDF files. Enter the password and download an unlocked copy.',
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-500/10',
-    border: 'border-emerald-500/20',
-  },
-  {
-    name: 'PDF Protect',
-    hash: '#/tools/pdf-protect',
-    icon: Lock,
-    description:
-      'Add password protection to your PDF files. Secure sensitive documents with a custom password.',
-    color: 'text-red-400',
-    bg: 'bg-red-500/10',
-    border: 'border-red-500/20',
-  },
-  {
-    name: 'PDF Page Numbers',
-    hash: '#/tools/pdf-page-numbers',
-    icon: Hash,
-    description:
-      'Add page numbers to PDF documents. Choose position, font size, and starting number.',
-    color: 'text-indigo-400',
-    bg: 'bg-indigo-500/10',
-    border: 'border-indigo-500/20',
-  },
-  {
-    name: 'PDF to Text',
-    hash: '#/tools/pdf-to-text',
-    icon: FileText,
-    description:
-      'Extract text from PDF documents. Copy to clipboard or download as a text file.',
-    color: 'text-teal-400',
-    bg: 'bg-teal-500/10',
-    border: 'border-teal-500/20',
-  },
-  {
-    name: 'PDF Rearrange',
-    hash: '#/tools/pdf-rearrange',
-    icon: ArrowUpDown,
-    description:
-      'Reorder PDF pages by dragging them into your desired sequence. Remove unwanted pages.',
-    color: 'text-purple-400',
-    bg: 'bg-purple-500/10',
-    border: 'border-purple-500/20',
-  },
-  {
-    name: 'PDF Metadata Editor',
-    hash: '#/tools/pdf-metadata-editor',
-    icon: FileSearch,
-    description:
-      'View and edit PDF metadata including title, author, subject, keywords, and dates.',
-    color: 'text-sky-400',
-    bg: 'bg-sky-500/10',
-    border: 'border-sky-500/20',
-  },
-  {
-    name: 'PDF Crop',
-    hash: '#/tools/pdf-crop',
-    icon: Crop,
-    description:
-      'Crop PDF pages by adjusting margins. Set custom crop areas for all or specific pages.',
-    color: 'text-lime-400',
-    bg: 'bg-lime-500/10',
-    border: 'border-lime-500/20',
+    premium: false,
   },
 ];
 
@@ -369,9 +253,9 @@ const categories = [
   },
   {
     name: 'PDF Tools',
-    icon: File,
-    count: 14,
-    toolHash: '#/pdf-tools',
+    icon: FileImage,
+    count: 2,
+    toolHash: '#/tools/image-to-pdf',
     color: 'text-orange-400',
     bg: 'bg-orange-500/10',
     border: 'border-orange-500/20',
@@ -380,7 +264,7 @@ const categories = [
 
 const stats = [
   { label: 'Trusted by 100K+ users', icon: Users },
-  { label: '27+ Free Tools', icon: Zap },
+  { label: '15+ Free Tools', icon: Zap },
   { label: 'No Signup Required', icon: ShieldCheck },
   { label: '100% Browser-Based', icon: Globe },
 ];
@@ -509,71 +393,6 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* ═══════════════════ PDF TOOLS HUB ═══════════════════ */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500/10 via-[#8A2BE2]/5 to-orange-500/10 border border-orange-500/20 p-8 sm:p-12">
-          {/* Background glow */}
-          <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-orange-500/10 blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full bg-[#8A2BE2]/8 blur-[100px] pointer-events-none" />
-
-          <div className="relative flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-            {/* Left content */}
-            <div className="flex-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-5">
-                <Sparkles className="h-3.5 w-3.5 text-orange-400" />
-                <span className="text-xs font-semibold text-orange-400">NEW — PDF Tools Suite</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 tracking-tight">
-                All PDF Tools <span className="text-orange-400">One Place</span>
-              </h2>
-              <p className="text-[#AAAAAA] text-base sm:text-lg leading-relaxed mb-6 max-w-lg">
-                Merge, split, compress, rotate, watermark, protect, unlock, add page numbers, crop, rearrange, extract text, edit metadata, convert images — 14 powerful PDF tools, all free and private.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <button
-                  onClick={() => onNavigate('#/pdf-tools')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-white font-bold text-sm bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-all duration-300 animate-btn-glow"
-                >
-                  <File className="h-5 w-5" />
-                  <span>Open PDF Tools</span>
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-                <div className="flex items-center gap-3 text-sm text-[#888888]">
-                  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-orange-400" /> 14 Tools</span>
-                  <span className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5 text-orange-400" /> 100% Private</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right - Mini tool grid */}
-            <div className="flex-shrink-0 grid grid-cols-3 sm:grid-cols-4 gap-2 max-w-sm">
-              {[
-                { name: 'Merge', icon: FilePlus, color: 'text-orange-400 bg-orange-500/10 border-orange-500/20' },
-                { name: 'Split', icon: Scissors, color: 'text-amber-400 bg-amber-500/10 border-amber-500/20' },
-                { name: 'Compress', icon: FileDown, color: 'text-green-400 bg-green-500/10 border-green-500/20' },
-                { name: 'Rotate', icon: RotateCw, color: 'text-blue-400 bg-blue-500/10 border-blue-500/20' },
-                { name: 'Watermark', icon: Droplets, color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20' },
-                { name: 'Unlock', icon: Unlock, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },
-                { name: 'Protect', icon: Lock, color: 'text-red-400 bg-red-500/10 border-red-500/20' },
-                { name: 'Numbers', icon: Hash, color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20' },
-                { name: 'To Text', icon: FileText, color: 'text-teal-400 bg-teal-500/10 border-teal-500/20' },
-                { name: 'Rearrange', icon: ArrowUpDown, color: 'text-purple-400 bg-purple-500/10 border-purple-500/20' },
-                { name: 'Metadata', icon: FileSearch, color: 'text-sky-400 bg-sky-500/10 border-sky-500/20' },
-                { name: 'Crop', icon: Crop, color: 'text-lime-400 bg-lime-500/10 border-lime-500/20' },
-              ].map((t) => (
-                <div
-                  key={t.name}
-                  className={`flex flex-col items-center gap-1.5 p-3 rounded-xl ${t.color} border cursor-default`}
-                >
-                  <t.icon className="h-5 w-5" />
-                  <span className="text-[10px] font-medium text-[#AAAAAA]">{t.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ═══════════════════ AD BANNER ═══════════════════ */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-20">
         <AdPlaceholder size="banner" />
@@ -598,6 +417,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 onClick={() => onNavigate(tool.hash)}
                 className="tool-card p-7 text-left group"
               >
+                {/* Premium Badge */}
+                {tool.premium && (
+                  <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#8A2BE2]/10 border border-[#8A2BE2]/20 text-[10px] font-bold text-[#8A2BE2] z-10">
+                    <Crown className="h-2.5 w-2.5" />
+                    PRO
+                  </span>
+                )}
                 <div
                   className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl ${tool.bg} border ${tool.border} mb-6 transition-all duration-300 group-hover:scale-110`}
                 >
@@ -610,7 +436,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   {tool.description}
                 </p>
                 <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#8A2BE2] group-hover:gap-3 transition-all duration-300">
-                  Use Tool
+                  {tool.premium ? 'Try Pro Feature' : 'Use Tool'}
                   <ArrowRight className="h-4 w-4" />
                 </span>
               </button>
@@ -673,6 +499,39 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
           </div>
         </section>
+      </div>
+
+      {/* ═══════════════════ PRICING CTA ═══════════════════ */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24">
+        <div className="bg-gradient-to-br from-[#8A2BE2]/10 via-[#0a0a0a] to-[#00FFFF]/5 border border-[#8A2BE2]/20 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#8A2BE2]/8 blur-[150px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full bg-[#00FFFF]/5 blur-[120px] pointer-events-none" />
+          <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8A2BE2]/10 border border-[#8A2BE2]/20 mb-4">
+                <Crown className="h-3 w-3 text-[#8A2BE2]" />
+                <span className="text-[10px] font-bold text-[#8A2BE2] uppercase tracking-wider">Go Premium</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white mb-3 tracking-tight">
+                Unlock <span className="gradient-text">Pro Features</span>
+              </h2>
+              <p className="text-sm sm:text-base text-[#AAAAAA] leading-relaxed max-w-lg">
+                Get ad-free experience, 3x faster processing, HD exports, batch processing up to 50 files, and 4 exclusive Pro tools. Starting at just $4.99/month.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center gap-3">
+              <button
+                onClick={() => onNavigate('#/pricing')}
+                className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-white font-semibold text-sm animate-btn-glow"
+              >
+                <Sparkles className="h-4 w-4" />
+                View Plans
+                <ArrowRight className="h-4 w-4" />
+              </button>
+              <span className="text-xs text-[#555555]">7-day free trial</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ═══════════════════ IN-CONTENT AD ═══════════════════ */}

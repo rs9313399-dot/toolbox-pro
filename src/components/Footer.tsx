@@ -8,7 +8,6 @@ interface FooterProps {
 }
 
 const toolLinks = [
-  { name: 'PDF Tools', hash: '#/pdf-tools' },
   { name: 'Password Generator', hash: '#/tools/password-generator' },
   { name: 'Word Counter', hash: '#/tools/word-counter' },
   { name: 'Image Compressor', hash: '#/tools/image-compressor' },
