@@ -12,14 +12,11 @@ import {
   Sparkles,
   Clock,
   Headphones,
-  Globe,
   Lock,
   BadgeCheck,
-  Download,
-  ImagePlus,
   FileText,
+  ImagePlus,
   Code2,
-  Users,
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -37,8 +34,6 @@ const plans = [
     color: 'text-[#AAAAAA]',
     bg: 'bg-white/5',
     border: 'border-[#222222]',
-    accentBg: 'bg-white/5',
-    accentBorder: 'border-white/10',
     popular: false,
     features: [
       { text: 'Access to all 15 basic tools', included: true },
@@ -54,6 +49,7 @@ const plans = [
     ],
     cta: 'Current Plan',
     ctaStyle: 'bg-white/5 text-[#AAAAAA] border border-[#222222] cursor-default',
+    ctaAction: 'none' as const,
   },
   {
     name: 'Pro',
@@ -67,8 +63,6 @@ const plans = [
     color: 'text-[#8A2BE2]',
     bg: 'bg-[#8A2BE2]/10',
     border: 'border-[#8A2BE2]/30',
-    accentBg: 'bg-[#8A2BE2]/10',
-    accentBorder: 'border-[#8A2BE2]/30',
     popular: true,
     features: [
       { text: 'All 15 tools + Pro exclusives', included: true },
@@ -86,6 +80,7 @@ const plans = [
     ],
     cta: 'Upgrade to Pro',
     ctaStyle: 'cta-primary text-white',
+    ctaAction: 'pro' as const,
   },
   {
     name: 'Enterprise',
@@ -99,8 +94,6 @@ const plans = [
     color: 'text-[#00FFFF]',
     bg: 'bg-[#00FFFF]/10',
     border: 'border-[#00FFFF]/30',
-    accentBg: 'bg-[#00FFFF]/10',
-    accentBorder: 'border-[#00FFFF]/30',
     popular: false,
     features: [
       { text: 'Everything in Pro plan', included: true },
@@ -118,6 +111,7 @@ const plans = [
     ],
     cta: 'Contact Sales',
     ctaStyle: 'bg-[#00FFFF]/10 text-[#00FFFF] border border-[#00FFFF]/30 hover:bg-[#00FFFF]/20 transition-all duration-300',
+    ctaAction: 'enterprise' as const,
   },
 ];
 
@@ -155,9 +149,30 @@ const faqs = [
   },
 ];
 
+function ChevronIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  );
+}
+
 export default function PricingPage({ onNavigate }: PricingPageProps) {
   const [isYearly, setIsYearly] = useState(false);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [showCheckout, setShowCheckout] = useState(false);
+
+  const handleCTA = (action: 'none' | 'pro' | 'enterprise') => {
+    if (action === 'none') return;
+    if (action === 'enterprise') {
+      onNavigate('#/contact');
+      return;
+    }
+    if (action === 'pro') {
+      setShowCheckout(true);
+      return;
+    }
+  };
 
   return (
     <main className="min-h-screen pt-24 pb-16">
@@ -262,11 +277,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
               {/* CTA Button */}
               <button
                 className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 mb-8 ${plan.ctaStyle}`}
-                onClick={() => {
-                  if (plan.name === 'Enterprise') {
-                    onNavigate('#/contact');
-                  }
-                }}
+                onClick={() => handleCTA(plan.ctaAction)}
               >
                 {plan.cta}
               </button>
@@ -468,7 +479,6 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
         {/* ═══════════════════ FINAL CTA ═══════════════════ */}
         <div className="text-center">
           <div className="bg-gradient-to-br from-[#8A2BE2]/10 to-[#00FFFF]/5 border border-[#8A2BE2]/20 rounded-3xl p-10 sm:p-16 relative overflow-hidden">
-            {/* Background glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-[#8A2BE2]/10 blur-[150px] pointer-events-none" />
 
             <div className="relative">
@@ -484,7 +494,10 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button className="cta-primary inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-white font-semibold text-sm animate-btn-glow">
+                <button
+                  onClick={() => setShowCheckout(true)}
+                  className="cta-primary inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-white font-semibold text-sm animate-btn-glow"
+                >
                   <span>Start 7-Day Free Trial</span>
                   <ArrowRight className="h-4 w-4" />
                 </button>
@@ -500,14 +513,97 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
           </div>
         </div>
       </div>
-    </main>
-  );
-}
 
-function ChevronIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
+      {/* ═══════════════════ CHECKOUT MODAL ═══════════════════ */}
+      {showCheckout && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={() => setShowCheckout(false)}
+          />
+          <div className="relative w-full max-w-md bg-[#0a0a0a] border border-[#8A2BE2]/30 rounded-2xl overflow-hidden shadow-2xl shadow-[#8A2BE2]/20 animate-fade-in-up">
+            {/* Top gradient line */}
+            <div className="h-1 bg-gradient-to-r from-[#8A2BE2] via-[#00FFFF] to-[#8A2BE2]" />
+
+            <div className="p-8">
+              {/* Icon */}
+              <div className="flex justify-center mb-6">
+                <div className="relative">
+                  <div className="h-16 w-16 rounded-2xl bg-[#8A2BE2]/10 border border-[#8A2BE2]/30 flex items-center justify-center">
+                    <Crown className="h-8 w-8 text-[#8A2BE2]" />
+                  </div>
+                  <div className="absolute -inset-3 rounded-3xl bg-[#8A2BE2]/5 blur-xl pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Title */}
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-white mb-2">Upgrade to Pro</h3>
+                <p className="text-sm text-[#888888] leading-relaxed">
+                  Payment integration coming soon! We are setting up Stripe for secure payments. For now, contact us to get early Pro access.
+                </p>
+              </div>
+
+              {/* Benefits */}
+              <div className="space-y-3 mb-8">
+                {[
+                  'All 15 tools + 4 Pro exclusives',
+                  'Ad-free experience forever',
+                  '3x faster processing speed',
+                  'HD export up to 4K quality',
+                  'Batch processing up to 50 files',
+                  'Priority email support',
+                ].map((benefit) => (
+                  <div key={benefit} className="flex items-center gap-3">
+                    <Check className="h-4 w-4 text-[#8A2BE2] flex-shrink-0" />
+                    <span className="text-sm text-[#CCCCCC]">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Price display */}
+              <div className="bg-[#111111] border border-[#1a1a1a] rounded-xl p-4 mb-6 text-center">
+                <span className="text-sm text-[#666666]">Pro Plan</span>
+                <div className="flex items-baseline justify-center gap-1 mt-1">
+                  <span className="text-3xl font-black text-white">{isYearly ? '$49.99' : '$4.99'}</span>
+                  <span className="text-sm text-[#666666]">{isYearly ? '/year' : '/month'}</span>
+                </div>
+                {isYearly && (
+                  <span className="inline-flex items-center gap-1 mt-1 text-xs font-semibold text-[#00FFFF]">
+                    <Sparkles className="h-3 w-3" /> Save 17%
+                  </span>
+                )}
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="space-y-3">
+                <button
+                  onClick={() => {
+                    setShowCheckout(false);
+                    onNavigate('#/contact');
+                  }}
+                  className="w-full cta-primary py-3.5 rounded-xl text-white text-sm font-semibold flex items-center justify-center gap-2"
+                >
+                  <Sparkles className="h-4 w-4" />
+                  Contact Us for Early Access
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+                <button
+                  onClick={() => setShowCheckout(false)}
+                  className="w-full py-3 rounded-xl text-[#666666] text-sm font-medium hover:text-[#888888] transition-colors"
+                >
+                  Maybe later
+                </button>
+              </div>
+
+              {/* Trust note */}
+              <p className="text-center text-[10px] text-[#444444] mt-4">
+                Cancel anytime &middot; 30-day money-back guarantee &middot; Secure payments via Stripe
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </main>
   );
 }

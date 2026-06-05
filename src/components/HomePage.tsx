@@ -182,6 +182,17 @@ const tools = [
     premium: true,
   },
   {
+    name: 'Color Grade Transfer',
+    hash: '#/tools/color-grade-transfer',
+    icon: ImagePlus,
+    description:
+      'Transfer the color palette and mood from any reference photo to your image with AI-powered color analysis.',
+    color: 'text-fuchsia-400',
+    bg: 'bg-fuchsia-500/10',
+    border: 'border-fuchsia-500/20',
+    premium: true,
+  },
+  {
     name: 'JSON Formatter',
     hash: '#/tools/json-formatter',
     icon: Braces,
@@ -209,7 +220,7 @@ const categories = [
   {
     name: 'Image Tools',
     icon: ImagePlus,
-    count: 5,
+    count: 6,
     toolHash: '#/tools/image-compressor',
     color: 'text-green-400',
     bg: 'bg-green-500/10',
@@ -264,7 +275,7 @@ const categories = [
 
 const stats = [
   { label: 'Trusted by 100K+ users', icon: Users },
-  { label: '15+ Free Tools', icon: Zap },
+  { label: '16+ Free Tools', icon: Zap },
   { label: 'No Signup Required', icon: ShieldCheck },
   { label: '100% Browser-Based', icon: Globe },
 ];
@@ -415,9 +426,8 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               <button
                 key={tool.hash}
                 onClick={() => onNavigate(tool.hash)}
-                className="tool-card p-7 text-left group"
+                className="tool-card p-7 text-left group relative"
               >
-                {/* Premium Badge */}
                 {tool.premium && (
                   <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#8A2BE2]/10 border border-[#8A2BE2]/20 text-[10px] font-bold text-[#8A2BE2] z-10">
                     <Crown className="h-2.5 w-2.5" />

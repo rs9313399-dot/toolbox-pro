@@ -11,6 +11,7 @@ const toolCategories = [
       { name: 'Image Compressor', hash: '#/tools/image-compressor', desc: 'Compress images' },
       { name: 'Image Resizer', hash: '#/tools/image-resizer', desc: 'Resize images' },
       { name: 'Background Remover', hash: '#/tools/background-remover', desc: 'Remove backgrounds' },
+      { name: 'Color Grade Transfer', hash: '#/tools/color-grade-transfer', desc: 'Transfer color moods' },
       { name: 'Image to PDF', hash: '#/tools/image-to-pdf', desc: 'Images to PDF' },
       { name: 'PDF to Image', hash: '#/tools/pdf-to-image', desc: 'PDF to images' },
     ],

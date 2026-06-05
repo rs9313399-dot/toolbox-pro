@@ -22,6 +22,7 @@ import ImageResizer from '@/components/tools/ImageResizer';
 import BackgroundRemover from '@/components/tools/BackgroundRemover';
 import JsonFormatter from '@/components/tools/JsonFormatter';
 import Base64Encoder from '@/components/tools/Base64Encoder';
+import ColorGradeTransfer from '@/components/tools/ColorGradeTransfer';
 import PrivacyPolicy from '@/components/PrivacyPolicy';
 import AboutPage from '@/components/AboutPage';
 import TermsOfService from '@/components/TermsOfService';
@@ -224,6 +225,7 @@ function Router({ hash, navigate }: { hash: string; navigate: (h: string) => voi
   if (route === '#/tools/background-remover') return <BackgroundRemover onNavigate={navigate} />;
   if (route === '#/tools/json-formatter') return <JsonFormatter onNavigate={navigate} />;
   if (route === '#/tools/base64-encoder') return <Base64Encoder onNavigate={navigate} />;
+  if (route === '#/tools/color-grade-transfer') return <ColorGradeTransfer onNavigate={navigate} />;
 
   // Blog listing
   if (route === '#/blog') {

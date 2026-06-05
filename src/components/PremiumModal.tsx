@@ -11,7 +11,6 @@ interface PremiumModalProps {
 }
 
 export default function PremiumModal({ isOpen, onClose, featureName, onNavigate }: PremiumModalProps) {
-  // Lock body scroll when open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -27,27 +26,19 @@ export default function PremiumModal({ isOpen, onClose, featureName, onNavigate 
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/80 backdrop-blur-sm"
         onClick={onClose}
       />
-
-      {/* Modal */}
       <div className="relative w-full max-w-md bg-[#0a0a0a] border border-[#8A2BE2]/30 rounded-2xl overflow-hidden shadow-2xl shadow-[#8A2BE2]/20 animate-fade-in-up">
-        {/* Top gradient line */}
         <div className="h-1 bg-gradient-to-r from-[#8A2BE2] via-[#00FFFF] to-[#8A2BE2]" />
-
-        {/* Close button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-1.5 rounded-lg hover:bg-white/5 transition-colors z-10"
         >
           <X className="h-4 w-4 text-[#666666]" />
         </button>
-
         <div className="p-8">
-          {/* Icon */}
           <div className="flex justify-center mb-6">
             <div className="relative">
               <div className="h-16 w-16 rounded-2xl bg-[#8A2BE2]/10 border border-[#8A2BE2]/30 flex items-center justify-center">
@@ -56,8 +47,6 @@ export default function PremiumModal({ isOpen, onClose, featureName, onNavigate 
               <div className="absolute -inset-3 rounded-3xl bg-[#8A2BE2]/5 blur-xl pointer-events-none" />
             </div>
           </div>
-
-          {/* Title */}
           <div className="text-center mb-6">
             <h3 className="text-xl font-bold text-white mb-2">
               {featureName ? `${featureName} is a Pro Feature` : 'Upgrade to Pro'}
@@ -66,8 +55,6 @@ export default function PremiumModal({ isOpen, onClose, featureName, onNavigate 
               Unlock this feature and many more with ToolBox Pro. Start your 7-day free trial today — no credit card required.
             </p>
           </div>
-
-          {/* Benefits */}
           <div className="space-y-3 mb-8">
             {[
               'All 15 tools + 4 Pro exclusives',
@@ -83,8 +70,6 @@ export default function PremiumModal({ isOpen, onClose, featureName, onNavigate 
               </div>
             ))}
           </div>
-
-          {/* CTA Buttons */}
           <div className="space-y-3">
             <button
               onClick={() => {
@@ -94,7 +79,7 @@ export default function PremiumModal({ isOpen, onClose, featureName, onNavigate 
               className="w-full cta-primary py-3.5 rounded-xl text-white text-sm font-semibold flex items-center justify-center gap-2"
             >
               <Sparkles className="h-4 w-4" />
-              Start 7-Day Free Trial
+              View Plans & Pricing
               <ArrowRight className="h-4 w-4" />
             </button>
             <button
@@ -104,8 +89,6 @@ export default function PremiumModal({ isOpen, onClose, featureName, onNavigate 
               Maybe later
             </button>
           </div>
-
-          {/* Trust note */}
           <p className="text-center text-[10px] text-[#444444] mt-4">
             Cancel anytime &middot; 30-day money-back guarantee &middot; Secure payments via Stripe
           </p>
