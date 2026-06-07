@@ -13,8 +13,74 @@ import {
   SlidersHorizontal,
   Info,
   Crown,
+  AlertCircle,
+  CheckCircle2,
+  Wand2,
 } from 'lucide-react';
 import ToolLayout from '@/components/ToolLayout';
+
+const SAMPLE_PHOTOS = [
+  {
+    id: 'warm-sunset',
+    label: 'Warm Sunset',
+    sublabel: 'Golden & Orange',
+    path: '/samples/warm-sunset.jpg',
+    gradient: 'from-orange-500/20 to-yellow-600/20',
+    borderColor: 'hover:border-orange-400/50',
+    activeBorder: 'border-orange-400',
+    dotColor: 'bg-orange-400',
+  },
+  {
+    id: 'cool-ocean',
+    label: 'Cool Ocean',
+    sublabel: 'Teal & Blue',
+    path: '/samples/cool-ocean.jpg',
+    gradient: 'from-cyan-500/20 to-blue-600/20',
+    borderColor: 'hover:border-cyan-400/50',
+    activeBorder: 'border-cyan-400',
+    dotColor: 'bg-cyan-400',
+  },
+  {
+    id: 'moody-forest',
+    label: 'Moody Forest',
+    sublabel: 'Dark Green',
+    path: '/samples/moody-forest.jpg',
+    gradient: 'from-green-600/20 to-emerald-900/20',
+    borderColor: 'hover:border-green-400/50',
+    activeBorder: 'border-green-400',
+    dotColor: 'bg-green-400',
+  },
+  {
+    id: 'vintage-film',
+    label: 'Vintage Film',
+    sublabel: 'Warm Faded',
+    path: '/samples/vintage-film.jpg',
+    gradient: 'from-amber-400/20 to-rose-400/20',
+    borderColor: 'hover:border-amber-400/50',
+    activeBorder: 'border-amber-400',
+    dotColor: 'bg-amber-400',
+  },
+  {
+    id: 'neon-city',
+    label: 'Neon City',
+    sublabel: 'Purple & Pink',
+    path: '/samples/neon-city.jpg',
+    gradient: 'from-purple-500/20 to-pink-500/20',
+    borderColor: 'hover:border-purple-400/50',
+    activeBorder: 'border-purple-400',
+    dotColor: 'bg-purple-400',
+  },
+  {
+    id: 'desert-sand',
+    label: 'Desert Sand',
+    sublabel: 'Earthy Tones',
+    path: '/samples/desert-sand.jpg',
+    gradient: 'from-yellow-700/20 to-orange-800/20',
+    borderColor: 'hover:border-yellow-600/50',
+    activeBorder: 'border-yellow-600',
+    dotColor: 'bg-yellow-600',
+  },
+];
 
 interface ColorGradeTransferProps {
   onNavigate: (hash: string) => void;
@@ -27,6 +93,9 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
   const [isProcessing, setIsProcessing] = useState(false);
   const [intensity, setIntensity] = useState(75);
   const [preserveDetails, setPreserveDetails] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+  const [selectedSample, setSelectedSample] = useState<string | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const referenceRef = useRef<HTMLInputElement>(null);
@@ -35,30 +104,57 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
     (e: React.ChangeEvent<HTMLInputElement>, type: 'input' | 'reference') => {
       const file = e.target.files?.[0];
       if (!file) return;
-      if (!file.type.startsWith('image/')) return;
+      if (!file.type.startsWith('image/')) {
+        setError('Please select a valid image file (PNG, JPG, WebP)');
+        return;
+      }
+      if (file.size > 50 * 1024 * 1024) {
+        setError('Image size must be less than 50MB');
+        return;
+      }
+      setError(null);
+      setSuccess(false);
       const reader = new FileReader();
+      reader.onerror = () => {
+        setError('Failed to read image file. Please try again.');
+      };
       reader.onload = (ev) => {
         const result = ev.target?.result as string;
-        if (type === 'input') setInputImage(result);
-        else setReferenceImage(result);
+        if (result) {
+          if (type === 'input') setInputImage(result);
+          else {
+            setReferenceImage(result);
+            setSelectedSample(null); // Deselect sample when user uploads own image
+          }
+        }
       };
       reader.readAsDataURL(file);
+      // Reset the input so same file can be re-uploaded
+      e.target.value = '';
     },
     []
   );
 
+  const handleSampleSelect = useCallback((sample: typeof SAMPLE_PHOTOS[number]) => {
+    setError(null);
+    setSuccess(false);
+    setOutputImage(null);
+    setReferenceImage(sample.path);
+    setSelectedSample(sample.id);
+  }, []);
+
   const extractColorPalette = (img: HTMLImageElement): number[][] => {
     const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d')!;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return [];
     const size = 50;
     canvas.width = size;
     canvas.height = size;
     ctx.drawImage(img, 0, 0, size, size);
     const data = ctx.getImageData(0, 0, size, size).data;
 
-    // K-means-like clustering for dominant colors
     const colors: number[][] = [];
-    const step = Math.floor(data.length / 4 / 64);
+    const step = Math.max(1, Math.floor(data.length / 4 / 64));
     for (let i = 0; i < data.length; i += step * 4) {
       const r = data[i], g = data[i + 1], b = data[i + 2];
       if (r + g + b > 15 && r + g + b < 740) {
@@ -84,25 +180,36 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
   };
 
   const computeColorMapping = (srcColors: number[][], refColors: number[][]): Float32Array => {
-    // Create a 256-entry LUT for each channel
     const lutR = new Float32Array(256);
     const lutG = new Float32Array(256);
     const lutB = new Float32Array(256);
 
-    // Build average shift from source palette to reference palette
     let srcAvgR = 0, srcAvgG = 0, srcAvgB = 0;
     let refAvgR = 0, refAvgG = 0, refAvgB = 0;
     const n = Math.min(srcColors.length, refColors.length);
+    if (n === 0) {
+      // No colors extracted — return identity mapping
+      for (let i = 0; i < 256; i++) {
+        lutR[i] = i;
+        lutG[i] = i;
+        lutB[i] = i;
+      }
+      const lut = new Float32Array(256 * 3);
+      for (let i = 0; i < 256; i++) {
+        lut[i] = lutR[i];
+        lut[256 + i] = lutG[i];
+        lut[512 + i] = lutB[i];
+      }
+      return lut;
+    }
+
     for (let i = 0; i < n; i++) {
       srcAvgR += srcColors[i][0]; srcAvgG += srcColors[i][1]; srcAvgB += srcColors[i][2];
       refAvgR += refColors[i][0]; refAvgG += refColors[i][1]; refAvgB += refColors[i][2];
     }
-    if (n > 0) {
-      srcAvgR /= n; srcAvgG /= n; srcAvgB /= n;
-      refAvgR /= n; refAvgG /= n; refAvgB /= n;
-    }
+    srcAvgR /= n; srcAvgG /= n; srcAvgB /= n;
+    refAvgR /= n; refAvgG /= n; refAvgB /= n;
 
-    // Compute std dev
     let srcStdR = 0, srcStdG = 0, srcStdB = 0;
     let refStdR = 0, refStdG = 0, refStdB = 0;
     for (let i = 0; i < n; i++) {
@@ -126,7 +233,6 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
       lutB[i] = ((i - srcAvgB) * (refStdB / srcStdB) + refAvgB);
     }
 
-    // Combine into single array
     const lut = new Float32Array(256 * 3);
     for (let i = 0; i < 256; i++) {
       lut[i] = lutR[i];
@@ -137,79 +243,145 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
   };
 
   const applyColorTransfer = useCallback(() => {
-    if (!inputImage || !referenceImage) return;
+    if (!inputImage || !referenceImage) {
+      setError('Please upload both an input image and a reference image first.');
+      return;
+    }
+
     setIsProcessing(true);
+    setError(null);
+    setSuccess(false);
 
-    const srcImg = new Image();
-    const refImg = new Image();
-    srcImg.crossOrigin = 'anonymous';
-    refImg.crossOrigin = 'anonymous';
+    try {
+      const srcImg = new Image();
+      const refImg = new Image();
+      // Set crossOrigin for sample images served from same origin to avoid canvas taint
+      refImg.crossOrigin = 'anonymous';
+      srcImg.crossOrigin = 'anonymous';
 
-    let loaded = 0;
-    const onLoad = () => {
-      loaded++;
-      if (loaded < 2) return;
+      let loaded = 0;
+      let hasError = false;
 
-      // Extract palettes
-      const srcColors = extractColorPalette(srcImg);
-      const refColors = extractColorPalette(refImg);
+      const onLoad = () => {
+        if (hasError) return;
+        loaded++;
+        if (loaded < 2) return;
 
-      // Compute mapping
-      const lut = computeColorMapping(srcColors, refColors);
+        try {
+          // Extract palettes
+          const srcColors = extractColorPalette(srcImg);
+          const refColors = extractColorPalette(refImg);
 
-      // Apply to input image
-      const canvas = document.createElement('canvas');
-      canvas.width = srcImg.naturalWidth;
-      canvas.height = srcImg.naturalHeight;
-      const ctx = canvas.getContext('2d')!;
-      ctx.drawImage(srcImg, 0, 0);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
-      const factor = intensity / 100;
-
-      for (let i = 0; i < data.length; i += 4) {
-        const r = data[i], g = data[i + 1], b = data[i + 2];
-        const newR = lut[r];
-        const newG = lut[256 + g];
-        const newB = lut[512 + b];
-
-        // Blend based on intensity
-        data[i] = Math.max(0, Math.min(255, Math.round(r + (newR - r) * factor)));
-        data[i + 1] = Math.max(0, Math.min(255, Math.round(g + (newG - g) * factor)));
-        data[i + 2] = Math.max(0, Math.min(255, Math.round(b + (newB - b) * factor)));
-
-        // Preserve luminance details
-        if (preserveDetails) {
-          const origLum = 0.299 * r + 0.587 * g + 0.114 * b;
-          const newLum = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
-          if (newLum > 0) {
-            const lumRatio = origLum / newLum;
-            const blend = 0.3; // preserve 30% of original luminance structure
-            const adjustedRatio = 1 + (lumRatio - 1) * blend;
-            data[i] = Math.max(0, Math.min(255, Math.round(data[i] * adjustedRatio)));
-            data[i + 1] = Math.max(0, Math.min(255, Math.round(data[i + 1] * adjustedRatio)));
-            data[i + 2] = Math.max(0, Math.min(255, Math.round(data[i + 2] * adjustedRatio)));
+          if (srcColors.length === 0 || refColors.length === 0) {
+            setError('Could not extract color palette from one or both images. Try different images.');
+            setIsProcessing(false);
+            return;
           }
+
+          // Compute mapping
+          const lut = computeColorMapping(srcColors, refColors);
+
+          // Apply to input image
+          const canvas = document.createElement('canvas');
+          const maxDim = 4096;
+          let w = srcImg.naturalWidth;
+          let h = srcImg.naturalHeight;
+          // Limit size for browser performance
+          if (w > maxDim || h > maxDim) {
+            const scale = maxDim / Math.max(w, h);
+            w = Math.round(w * scale);
+            h = Math.round(h * scale);
+          }
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            setError('Canvas not supported in your browser.');
+            setIsProcessing(false);
+            return;
+          }
+          ctx.drawImage(srcImg, 0, 0, w, h);
+          const imageData = ctx.getImageData(0, 0, w, h);
+          const data = imageData.data;
+          const factor = intensity / 100;
+
+          for (let i = 0; i < data.length; i += 4) {
+            const r = data[i], g = data[i + 1], b = data[i + 2];
+            const newR = lut[r];
+            const newG = lut[256 + g];
+            const newB = lut[512 + b];
+
+            // Blend based on intensity
+            data[i] = Math.max(0, Math.min(255, Math.round(r + (newR - r) * factor)));
+            data[i + 1] = Math.max(0, Math.min(255, Math.round(g + (newG - g) * factor)));
+            data[i + 2] = Math.max(0, Math.min(255, Math.round(b + (newB - b) * factor)));
+
+            // Preserve luminance details
+            if (preserveDetails) {
+              const origLum = 0.299 * r + 0.587 * g + 0.114 * b;
+              const newLum = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+              if (newLum > 0) {
+                const lumRatio = origLum / newLum;
+                const blend = 0.3;
+                const adjustedRatio = 1 + (lumRatio - 1) * blend;
+                data[i] = Math.max(0, Math.min(255, Math.round(data[i] * adjustedRatio)));
+                data[i + 1] = Math.max(0, Math.min(255, Math.round(data[i + 1] * adjustedRatio)));
+                data[i + 2] = Math.max(0, Math.min(255, Math.round(data[i + 2] * adjustedRatio)));
+              }
+            }
+          }
+
+          ctx.putImageData(imageData, 0, 0);
+          const result = canvas.toDataURL('image/png');
+          setOutputImage(result);
+          setSuccess(true);
+          setIsProcessing(false);
+        } catch (err) {
+          setError('Error processing images: ' + (err instanceof Error ? err.message : 'Unknown error'));
+          setIsProcessing(false);
         }
-      }
+      };
 
-      ctx.putImageData(imageData, 0, 0);
-      setOutputImage(canvas.toDataURL('image/png'));
+      const onError = () => {
+        if (hasError) return;
+        hasError = true;
+        setError('Failed to load one of the images. Please try uploading again.');
+        setIsProcessing(false);
+      };
+
+      srcImg.onload = onLoad;
+      refImg.onload = onLoad;
+      srcImg.onerror = onError;
+      refImg.onerror = onError;
+
+      srcImg.src = inputImage;
+      refImg.src = referenceImage;
+
+      // Safety timeout for very large images
+      setTimeout(() => {
+        if (isProcessing) {
+          setError('Processing is taking too long. Try with smaller images.');
+          setIsProcessing(false);
+        }
+      }, 30000);
+    } catch (err) {
+      setError('Unexpected error: ' + (err instanceof Error ? err.message : 'Unknown error'));
       setIsProcessing(false);
-    };
-
-    srcImg.onload = onLoad;
-    refImg.onload = onLoad;
-    srcImg.src = inputImage;
-    refImg.src = referenceImage;
-  }, [inputImage, referenceImage, intensity, preserveDetails]);
+    }
+  }, [inputImage, referenceImage, intensity, preserveDetails, isProcessing]);
 
   const handleDownload = () => {
     if (!outputImage) return;
-    const a = document.createElement('a');
-    a.href = outputImage;
-    a.download = 'color-graded-image.png';
-    a.click();
+    try {
+      const a = document.createElement('a');
+      a.href = outputImage;
+      a.download = 'color-graded-image.png';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch {
+      setError('Failed to download image. Please try right-clicking the image and selecting "Save Image As".');
+    }
   };
 
   const handleReset = () => {
@@ -218,6 +390,9 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
     setOutputImage(null);
     setIntensity(75);
     setPreserveDetails(true);
+    setError(null);
+    setSuccess(false);
+    setSelectedSample(null);
   };
 
   const faqItems = [
@@ -271,6 +446,30 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
           <span className="text-xs text-[#888888] ml-1">— Available on Pro & Enterprise plans</span>
         </div>
 
+        {/* Error Message */}
+        {error && (
+          <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20">
+            <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-medium text-red-400">{error}</p>
+              <button
+                onClick={() => setError(null)}
+                className="text-xs text-red-400/70 hover:text-red-400 mt-1 underline"
+              >
+                Dismiss
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Success Message */}
+        {success && (
+          <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-green-500/10 border border-green-500/20">
+            <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0" />
+            <p className="text-sm font-medium text-green-400">Color transfer applied successfully! Download your result below.</p>
+          </div>
+        )}
+
         {/* Image Upload Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Input Image */}
@@ -288,7 +487,7 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
                 <>
                   <img src={inputImage} alt="Input" className="w-full h-full object-cover" />
                   <button
-                    onClick={(e) => { e.stopPropagation(); setInputImage(null); }}
+                    onClick={(e) => { e.stopPropagation(); setInputImage(null); setError(null); setSuccess(false); setOutputImage(null); }}
                     className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/70 hover:bg-red-500/80 transition-colors"
                   >
                     <X className="h-3.5 w-3.5 text-white" />
@@ -331,9 +530,9 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
             >
               {referenceImage ? (
                 <>
-                  <img src={referenceImage} alt="Reference" className="w-full h-full object-cover" />
+                  <img src={referenceImage} alt="Reference" className="w-full h-full object-cover" crossOrigin="anonymous" />
                   <button
-                    onClick={(e) => { e.stopPropagation(); setReferenceImage(null); }}
+                    onClick={(e) => { e.stopPropagation(); setReferenceImage(null); setError(null); setSuccess(false); setOutputImage(null); setSelectedSample(null); }}
                     className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/70 hover:bg-red-500/80 transition-colors"
                   >
                     <X className="h-3.5 w-3.5 text-white" />
@@ -341,6 +540,11 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
                   <div className="absolute bottom-2 right-2 px-3 py-1.5 rounded-lg bg-black/70 text-xs text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                     Replace
                   </div>
+                  {selectedSample && (
+                    <div className="absolute bottom-2 left-2 px-2.5 py-1 rounded-lg bg-[#00FFFF]/20 border border-[#00FFFF]/30 text-[10px] text-[#00FFFF] font-medium">
+                      {SAMPLE_PHOTOS.find(s => s.id === selectedSample)?.label}
+                    </div>
+                  )}
                 </>
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
@@ -361,6 +565,54 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
               className="hidden"
               onChange={(e) => handleImageUpload(e, 'reference')}
             />
+          </div>
+        </div>
+
+        {/* Sample Reference Photos */}
+        <div className="bg-[#0a0a0a] border border-[#1a1a1a] rounded-xl p-5">
+          <div className="flex items-center gap-2 mb-1">
+            <Wand2 className="h-4 w-4 text-[#00FFFF]" />
+            <h3 className="text-sm font-bold text-white">Quick Pick — Sample Reference Photos</h3>
+          </div>
+          <p className="text-xs text-[#666666] mb-4">Select a sample photo below to use as your reference, or upload your own above.</p>
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+            {SAMPLE_PHOTOS.map((sample) => (
+              <button
+                key={sample.id}
+                onClick={() => handleSampleSelect(sample)}
+                className={`relative group rounded-xl overflow-hidden border-2 transition-all duration-300 ${
+                  selectedSample === sample.id
+                    ? `${sample.activeBorder} shadow-lg scale-[1.02]`
+                    : `border-[#1a1a1a] ${sample.borderColor}`
+                }`}
+              >
+                <div className="aspect-[3/4] relative">
+                  <img
+                    src={sample.path}
+                    alt={sample.label}
+                    className="w-full h-full object-cover"
+                    crossOrigin="anonymous"
+                  />
+                  {/* Gradient overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-t ${sample.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                  {/* Label overlay */}
+                  <div className="absolute inset-x-0 bottom-0 p-1.5 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                    <p className="text-[10px] font-bold text-white leading-tight">{sample.label}</p>
+                    <p className="text-[8px] text-white/60 leading-tight">{sample.sublabel}</p>
+                  </div>
+                  {/* Selected indicator */}
+                  {selectedSample === sample.id && (
+                    <div className="absolute top-1.5 right-1.5">
+                      <div className="h-4 w-4 rounded-full bg-[#00FFFF] flex items-center justify-center">
+                        <svg className="h-2.5 w-2.5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </button>
+            ))}
           </div>
         </div>
 
@@ -483,7 +735,7 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#8A2BE2]/10 text-[10px] font-bold text-[#8A2BE2] flex-shrink-0 mt-0.5">2</span>
-                    Upload a reference image — the photo with the color mood you want to copy
+                    Choose a reference — pick from our sample photos below or upload your own
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#8A2BE2]/10 text-[10px] font-bold text-[#8A2BE2] flex-shrink-0 mt-0.5">3</span>
