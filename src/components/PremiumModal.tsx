@@ -74,7 +74,7 @@ export default function PremiumModal({ isOpen, onClose, featureName, onNavigate 
             <button
               onClick={() => {
                 onClose();
-                onNavigate('#/pricing');
+                onNavigate('/pricing');
               }}
               className="w-full cta-primary py-3.5 rounded-xl text-white text-sm font-semibold flex items-center justify-center gap-2"
             >

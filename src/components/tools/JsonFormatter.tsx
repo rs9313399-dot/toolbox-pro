@@ -39,17 +39,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'Base64 Encoder',
-    hash: '#/tools/base64-encoder',
+    hash: '/tools/base64-encoder',
     description: 'Encode and decode Base64 text and files.',
   },
   {
     name: 'Word Counter',
-    hash: '#/tools/word-counter',
+    hash: '/tools/word-counter',
     description: 'Count words, characters, and more in your text.',
   },
   {
     name: 'Password Generator',
-    hash: '#/tools/password-generator',
+    hash: '/tools/password-generator',
     description: 'Generate strong, secure passwords.',
   },
 ];
@@ -232,6 +232,33 @@ export default function JsonFormatter({ onNavigate }: JsonFormatterProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>JSON Formatter and Validator — Beautify, Minify, and Validate JSON Online</h2>
+        <p>JSON (JavaScript Object Notation) is the backbone of modern web development, serving as the standard data interchange format for APIs, configuration files, and data storage. However, JSON data from APIs and minified sources is often difficult to read and debug. Our free online JSON Formatter and Validator helps you transform messy, compacted JSON into clean, properly indented code — and instantly validates your JSON to catch syntax errors with precise error locations.</p>
+        <h3>JSON Formatting for API Development</h3>
+        <p>When working with REST APIs, you constantly encounter JSON responses that are minified for efficient network transmission. While this is great for performance, it makes debugging and development significantly harder. A JSON formatter takes that single-line response and transforms it into a readable, hierarchical structure with proper indentation and line breaks. This allows you to quickly identify data structures, spot anomalies, and understand the shape of your API responses. Our tool uses 2-space indentation, which is the most widely adopted JSON formatting standard in the developer community.</p>
+        <h3>Common JSON Errors and How to Fix Them</h3>
+        <p>JSON has strict syntax rules that differ from JavaScript object literals, and even experienced developers make mistakes. The most common errors include: trailing commas after the last item in an object or array (not allowed in JSON), single quotes instead of double quotes for strings and keys, missing commas between elements, unquoted object keys, JavaScript-style comments (JSON does not support comments), and improperly escaped special characters in strings. Our validator pinpoints the exact location of these errors, showing you the line and column number so you can fix them quickly.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Format and beautify JSON with proper 2-space indentation</li>
+          <li>Minify JSON to compact single-line format for production use</li>
+          <li>Validate JSON with detailed error messages including line and column numbers</li>
+          <li>Tree view toggle for hierarchical data exploration</li>
+          <li>One-click copy of formatted or minified output</li>
+          <li>Load sample JSON to test the tool instantly</li>
+          <li>Input and output size display in bytes and kilobytes</li>
+          <li>Complete client-side processing — your data never leaves your browser</li>
+        </ul>
+        <h3>Developer Use Cases</h3>
+        <ul>
+          <li>Debug API responses by formatting them for readability</li>
+          <li>Validate JSON configuration files before deployment</li>
+          <li>Minify JSON for production to reduce file size and network transfer time</li>
+          <li>Learn JSON structure by examining well-formatted sample data</li>
+          <li>Clean up JSON data from web scraping or data export tools</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {/* Input */}

@@ -165,7 +165,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
   const handleCTA = (action: 'none' | 'pro' | 'enterprise') => {
     if (action === 'none') return;
     if (action === 'enterprise') {
-      onNavigate('#/contact');
+      onNavigate('/contact');
       return;
     }
     if (action === 'pro') {
@@ -502,7 +502,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
                   <ArrowRight className="h-4 w-4" />
                 </button>
                 <button
-                  onClick={() => onNavigate('#/contact')}
+                  onClick={() => onNavigate('/contact')}
                   className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl border border-[#222222] text-white font-semibold text-sm hover:border-[#8A2BE2]/50 hover:bg-white/5 transition-all duration-300"
                 >
                   <Headphones className="h-4 w-4" />
@@ -580,7 +580,7 @@ export default function PricingPage({ onNavigate }: PricingPageProps) {
                 <button
                   onClick={() => {
                     setShowCheckout(false);
-                    onNavigate('#/contact');
+                    onNavigate('/contact');
                   }}
                   className="w-full cta-primary py-3.5 rounded-xl text-white text-sm font-semibold flex items-center justify-center gap-2"
                 >

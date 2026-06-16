@@ -27,17 +27,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'Password Generator',
-    hash: '#/tools/password-generator',
+    hash: '/tools/password-generator',
     description: 'Create strong, secure passwords easily.',
   },
   {
     name: 'Image Compressor',
-    hash: '#/tools/image-compressor',
+    hash: '/tools/image-compressor',
     description: 'Compress images without losing quality.',
   },
   {
     name: 'YouTube Thumbnail',
-    hash: '#/tools/youtube-thumbnail',
+    hash: '/tools/youtube-thumbnail',
     description: 'Download YouTube video thumbnails easily.',
   },
 ];
@@ -110,6 +110,31 @@ export default function WordCounter({ onNavigate }: WordCounterProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Free Online Word Counter — Count Words, Characters &amp; More</h2>
+        <p>Whether you are writing a blog post, academic paper, social media caption, or SEO meta description, knowing your word count is essential. Our free online word counter provides instant, real-time statistics about your text including word count, character count (with and without spaces), sentence count, paragraph count, average word length, and estimated reading time. All processing happens directly in your browser for maximum speed and privacy.</p>
+        <h3>Word Counting for SEO and Web Writing</h3>
+        <p>Search engines consider content length as one of many ranking factors. Studies consistently show that longer, comprehensive content tends to rank higher in search results. For blog posts and articles, the sweet spot is typically 1,500 to 2,500 words for competitive keywords. Meta descriptions should stay under 160 characters, title tags under 60 characters, and social media posts have their own platform-specific limits. Our word counter helps you stay within these guidelines effortlessly.</p>
+        <h3>Reading Time Estimation</h3>
+        <p>The average adult reads approximately 200 to 250 words per minute. Our tool estimates reading time based on the widely accepted standard of 200 words per minute, giving you a reliable benchmark for your audience. This is particularly useful for bloggers and content creators who want to set reader expectations — displaying estimated reading time on articles has been shown to increase engagement by up to 13%.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Real-time word count, character count, sentence count, and paragraph count</li>
+          <li>Character count with and without spaces for precise formatting</li>
+          <li>Average word length calculation for readability analysis</li>
+          <li>Estimated reading time based on 200 WPM standard</li>
+          <li>Completely private — no text is ever sent to a server or stored anywhere</li>
+          <li>Instant results as you type with zero latency</li>
+        </ul>
+        <h3>Use Cases</h3>
+        <ul>
+          <li>Academic writing — meet minimum or maximum word count requirements for essays and papers</li>
+          <li>SEO optimization — ensure your content meets recommended length for target keywords</li>
+          <li>Social media — stay within character limits for Twitter (280), Instagram captions (2,200), and LinkedIn posts (3,000)</li>
+          <li>Copywriting — hit target word counts for client deliverables and content briefs</li>
+          <li>Journalism — write to specified column inches or word count assignments</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {/* Stats Grid */}

@@ -38,17 +38,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'QR Code Generator',
-    hash: '#/tools/qr-code-generator',
+    hash: '/tools/qr-code-generator',
     description: 'Generate QR codes from URLs or text.',
   },
   {
     name: 'Base64 Encoder',
-    hash: '#/tools/base64-encoder',
+    hash: '/tools/base64-encoder',
     description: 'Encode and decode Base64 strings.',
   },
   {
     name: 'Password Generator',
-    hash: '#/tools/password-generator',
+    hash: '/tools/password-generator',
     description: 'Create strong, secure passwords easily.',
   },
 ];
@@ -144,6 +144,31 @@ export default function UrlShortener({ onNavigate }: UrlShortenerProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>URL Shortener — Create Short, Shareable Links Instantly</h2>
+        <p>Long, unwieldy URLs are difficult to share, hard to remember, and can break across messaging platforms and social media. URL shortening creates a compact alias that redirects to the original address, making your links cleaner, more professional, and easier to distribute. Our free URL Shortener generates shortened links using a client-side encoding algorithm, perfect for social media posts, text messages, email campaigns, and any situation where you need a concise link.</p>
+        <h3>Benefits of Shortened URLs</h3>
+        <p>Shortened URLs offer several advantages beyond just being shorter. They look more professional in printed materials, email signatures, and social media bios. On platforms with character limits like Twitter, shorter URLs leave more room for your actual message. Shortened links can also hide UTM parameters and other tracking data that might look spammy or confusing to end users. In a full URL shortening service, they also provide valuable analytics including click counts, geographic data, referrer information, and device breakdowns.</p>
+        <h3>Link Management and Analytics</h3>
+        <p>Professional URL shortening services like Bitly, Rebrandly, and TinyURL offer more than just shorter links. They provide dashboards for managing all your shortened URLs in one place, tracking click analytics over time, and even creating custom branded short domains. These analytics help marketers understand which channels drive the most traffic, which content resonates with audiences, and how to optimize their distribution strategy. Our tool provides a client-side demonstration of URL shortening — for production use with analytics, consider integrating with a dedicated URL shortening API.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Instant URL shortening with a single click</li>
+          <li>Hash-based encoding algorithm generates unique short codes from your URL</li>
+          <li>Copy shortened URLs to clipboard with one click</li>
+          <li>Full history of all shortened URLs created in your session</li>
+          <li>Delete individual entries or clear entire history</li>
+          <li>Client-side processing — no server registration required</li>
+        </ul>
+        <h3>Use Cases for Shortened URLs</h3>
+        <ul>
+          <li>Social media marketing — save character space and track link performance</li>
+          <li>Print materials — shorter URLs are easier to type and remember from flyers, brochures, and business cards</li>
+          <li>Email campaigns — cleaner links improve click-through rates and avoid spam filters</li>
+          <li>SMS marketing — every character counts in text messages, making short URLs essential</li>
+          <li>QR codes — shorter URLs produce simpler, more scannable QR codes</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {/* Demo Notice */}

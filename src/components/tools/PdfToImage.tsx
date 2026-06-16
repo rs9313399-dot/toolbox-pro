@@ -39,17 +39,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'Image to PDF',
-    hash: '#/tools/image-to-pdf',
+    hash: '/tools/image-to-pdf',
     description: 'Convert multiple images into a single PDF.',
   },
   {
     name: 'Image Resizer',
-    hash: '#/tools/image-resizer',
+    hash: '/tools/image-resizer',
     description: 'Resize images to any dimension easily.',
   },
   {
     name: 'Image Compressor',
-    hash: '#/tools/image-compressor',
+    hash: '/tools/image-compressor',
     description: 'Compress images without losing quality.',
   },
 ];
@@ -156,6 +156,30 @@ export default function PdfToImage({ onNavigate }: PdfToImageProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>PDF to Image Converter — Convert PDF Pages to PNG Images Free</h2>
+        <p>Sometimes you need to extract visual content from a PDF document as image files — whether for sharing on social media, embedding in a presentation, or editing in an image editor. Our free PDF to Image Converter renders each page of your PDF as a high-quality PNG image, with adjustable resolution settings to balance quality and file size. All rendering happens locally in your browser using the PDF.js library.</p>
+        <h3>When You Need PDF to Image Conversion</h3>
+        <p>There are many scenarios where converting a PDF to images is the most practical solution. Social media platforms do not support PDF uploads, so converting infographic PDFs to PNG images allows you to share them on Instagram, Twitter, and Facebook. Presentations often look better with embedded images rather than linked PDF files. Graphic designers may need to extract charts, diagrams, or illustrations from PDF reports for use in other projects. Educators frequently convert textbook pages to images for digital whiteboard tools and slides. Whatever your use case, our tool makes the conversion seamless.</p>
+        <h3>Resolution and Quality Settings</h3>
+        <p>The quality of your converted images depends on the scale factor you choose. At 1x scale, the output matches the PDF's native 72 DPI resolution, which is suitable for screen viewing. At 2x scale (144 DPI), images are sharper and better suited for printing and high-resolution displays. At 3x and 4x, you get even more detail but with larger file sizes. For most web and presentation uses, 2x scale provides the best balance between quality and file size.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Convert any PDF file to high-quality PNG images page by page</li>
+          <li>Adjustable scale factor from 1x (72 DPI) to 4x (288 DPI)</li>
+          <li>Download individual pages or all pages at once</li>
+          <li>Visual grid preview of all converted pages</li>
+          <li>Client-side rendering using PDF.js — no server uploads, complete privacy</li>
+          <li>Supports password-free PDFs of any length</li>
+        </ul>
+        <h3>Tips for Best Results</h3>
+        <ul>
+          <li>Use 2x scale for web graphics, social media, and digital presentations</li>
+          <li>Use 3x or 4x scale if you plan to print the images or need fine detail</li>
+          <li>For very large PDFs (50+ pages), conversion may take longer — be patient while pages render</li>
+          <li>Use our Image Compressor tool to reduce the file size of exported images after conversion</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {pages.length === 0 ? (

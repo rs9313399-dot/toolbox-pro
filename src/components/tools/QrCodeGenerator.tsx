@@ -47,17 +47,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'URL Shortener',
-    hash: '#/tools/url-shortener',
+    hash: '/tools/url-shortener',
     description: 'Shorten long URLs for easy sharing.',
   },
   {
     name: 'Base64 Encoder',
-    hash: '#/tools/base64-encoder',
+    hash: '/tools/base64-encoder',
     description: 'Encode and decode Base64 strings.',
   },
   {
     name: 'Password Generator',
-    hash: '#/tools/password-generator',
+    hash: '/tools/password-generator',
     description: 'Create strong, secure passwords easily.',
   },
 ];
@@ -170,6 +170,31 @@ export default function QrCodeGenerator({ onNavigate }: QrCodeGeneratorProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Free QR Code Generator — Create Custom QR Codes for Business and Marketing</h2>
+        <p>QR codes (Quick Response codes) have become an essential tool for bridging the physical and digital worlds. From restaurant menus and business cards to marketing campaigns and product packaging, QR codes provide an instant, frictionless way to direct people to websites, share contact information, connect to Wi-Fi networks, and much more. Our free QR Code Generator lets you create custom, high-quality QR codes in seconds — with support for URLs, text, Wi-Fi credentials, email addresses, and phone numbers.</p>
+        <h3>Business and Marketing Applications</h3>
+        <p>QR codes are incredibly versatile for business use. Restaurants use them for digital menus, reducing printing costs and enabling real-time updates. Retail stores place them on product packaging to link to specifications, reviews, or tutorial videos. Real estate agents include QR codes on yard signs that link to virtual tours. Event organizers use them for paperless ticketing and check-in. Marketers track QR code scans to measure campaign effectiveness across print, outdoor, and direct mail channels. The possibilities are virtually limitless.</p>
+        <h3>Types of QR Codes You Can Create</h3>
+        <p>Our generator supports five distinct QR code types, each optimized for a specific use case. URL QR codes direct scanners to any web address — perfect for landing pages, app downloads, and social media profiles. Text QR codes encode any plain text message. Wi-Fi QR codes let people join your network instantly by scanning — no manual password entry required. Email QR codes open a pre-addressed email with an optional subject line. Phone QR codes initiate a call to a specified number with a single scan.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Five QR code types: URL, Text, Wi-Fi, Email, and Phone</li>
+          <li>Custom foreground and background colors for brand consistency</li>
+          <li>Adjustable output size from 128px to 1024px for any application</li>
+          <li>High error correction level (M) for reliable scanning even with partial obstruction</li>
+          <li>Download as PNG image ready for print or digital use</li>
+          <li>Complete client-side generation — no data sent to any server</li>
+        </ul>
+        <h3>Tips for Effective QR Codes</h3>
+        <ul>
+          <li>Always test your QR code with multiple devices before printing or distributing</li>
+          <li>Maintain high contrast between foreground and background — dark on light works best</li>
+          <li>Include a clear call-to-action near the QR code (e.g., "Scan to visit our website")</li>
+          <li>Ensure the QR code is large enough to scan from the expected viewing distance</li>
+          <li>Use shortened URLs to keep QR codes simple and easier to scan</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {/* QR Type Selector */}

@@ -28,17 +28,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'Password Generator',
-    hash: '#/tools/password-generator',
+    hash: '/tools/password-generator',
     description: 'Create strong, secure passwords easily.',
   },
   {
     name: 'Word Counter',
-    hash: '#/tools/word-counter',
+    hash: '/tools/word-counter',
     description: 'Count words, characters, and more.',
   },
   {
     name: 'YouTube Thumbnail',
-    hash: '#/tools/youtube-thumbnail',
+    hash: '/tools/youtube-thumbnail',
     description: 'Download YouTube video thumbnails easily.',
   },
 ];
@@ -186,6 +186,30 @@ export default function ImageCompressor({ onNavigate }: ImageCompressorProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Free Online Image Compressor — Reduce Image File Size Without Losing Quality</h2>
+        <p>Large image files are one of the biggest contributors to slow website performance. Our free online image compressor lets you reduce the file size of JPEG, PNG, and WebP images directly in your browser, with no uploads to external servers. Simply drag and drop your image, adjust the quality slider, and download the compressed result — all in seconds.</p>
+        <h3>Why Image Compression Matters for Web Performance</h3>
+        <p>Page load speed is a critical factor for both user experience and search engine rankings. Google's Core Web Vitals initiative specifically measures Largest Contentful Paint (LCP), which is heavily influenced by image loading times. Unoptimized images can add hundreds of kilobytes or even megabytes to a page, dramatically increasing load times especially on mobile networks. By compressing images before uploading them to your website, you can reduce page weight by 40–70% while maintaining visual quality that is virtually indistinguishable from the original.</p>
+        <h3>JPEG, PNG, and WebP Optimization</h3>
+        <p>Each image format has different compression characteristics. JPEG uses lossy compression and works best for photographs and complex images with many colors. PNG uses lossless compression and is ideal for graphics, logos, and images with transparency. WebP is a modern format developed by Google that provides superior lossy and lossless compression — WebP files are typically 25–35% smaller than equivalent JPEGs with comparable quality. Our tool outputs compressed JPEG format, which offers the best balance of quality and file size for most web use cases.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Client-side compression using the HTML5 Canvas API — your images never leave your device</li>
+          <li>Adjustable quality slider from 1% to 100% for precise control over the quality-to-size ratio</li>
+          <li>Side-by-side comparison of original and compressed images with file size savings displayed</li>
+          <li>Support for JPEG, PNG, and WebP input formats</li>
+          <li>One-click download of the compressed image</li>
+          <li>No watermarks, no file limits, no registration required</li>
+        </ul>
+        <h3>Tips for Best Compression Results</h3>
+        <ul>
+          <li>For photographs, a quality setting of 70–85% typically produces excellent results with significant file size reduction</li>
+          <li>For graphics and screenshots, try 80–95% quality to preserve sharp edges and text clarity</li>
+          <li>Consider converting PNG graphics to JPEG format when transparency is not needed for additional savings</li>
+          <li>For maximum web performance, pair compression with proper image dimensions — resize large images before compressing</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {!originalFile ? (

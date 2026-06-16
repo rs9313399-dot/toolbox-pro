@@ -40,7 +40,7 @@ interface HomePageProps {
 const tools = [
   {
     name: 'Password Generator',
-    hash: '#/tools/password-generator',
+    path: '/tools/password-generator',
     icon: KeyRound,
     description:
       'Create strong, secure passwords with customizable length and character options. Uses crypto.getRandomValues() for maximum security.',
@@ -51,7 +51,7 @@ const tools = [
   },
   {
     name: 'Word Counter',
-    hash: '#/tools/word-counter',
+    hash: '/tools/word-counter',
     icon: Type,
     description:
       'Count words, characters, sentences, and paragraphs instantly with reading time estimation. Real-time text analysis.',
@@ -62,7 +62,7 @@ const tools = [
   },
   {
     name: 'Image Compressor',
-    hash: '#/tools/image-compressor',
+    hash: '/tools/image-compressor',
     icon: Image,
     description:
       'Compress images in your browser without uploading. Adjust quality, preview side-by-side, and download instantly.',
@@ -73,7 +73,7 @@ const tools = [
   },
   {
     name: 'YouTube Thumbnail',
-    hash: '#/tools/youtube-thumbnail',
+    hash: '/tools/youtube-thumbnail',
     icon: Youtube,
     description:
       'Download YouTube video thumbnails in multiple resolutions. Just paste the URL and get all sizes instantly.',
@@ -84,7 +84,7 @@ const tools = [
   },
   {
     name: 'Instagram Reel',
-    hash: '#/tools/instagram-reel',
+    hash: '/tools/instagram-reel',
     icon: Instagram,
     description:
       'Download Instagram reels for free. Paste the reel URL and get your download link or use alternative services.',
@@ -95,7 +95,7 @@ const tools = [
   },
   {
     name: 'Image to PDF',
-    hash: '#/tools/image-to-pdf',
+    hash: '/tools/image-to-pdf',
     icon: FileImage,
     description:
       'Convert images to PDF documents instantly. Upload multiple images, rearrange, and download as a single PDF.',
@@ -106,7 +106,7 @@ const tools = [
   },
   {
     name: 'PDF to Image',
-    hash: '#/tools/pdf-to-image',
+    hash: '/tools/pdf-to-image',
     icon: FileImage,
     description:
       'Convert PDF pages to high-quality PNG images. Export each page individually or download all at once.',
@@ -117,7 +117,7 @@ const tools = [
   },
   {
     name: 'QR Code Generator',
-    hash: '#/tools/qr-code-generator',
+    hash: '/tools/qr-code-generator',
     icon: QrCode,
     description:
       'Generate custom QR codes for URLs, text, WiFi, and more. Download high-quality PNG images instantly.',
@@ -128,7 +128,7 @@ const tools = [
   },
   {
     name: 'URL Shortener',
-    hash: '#/tools/url-shortener',
+    hash: '/tools/url-shortener',
     icon: Link,
     description:
       'Shorten long URLs into compact, shareable links. Perfect for social media, messages, and marketing.',
@@ -139,7 +139,7 @@ const tools = [
   },
   {
     name: 'Text to Speech',
-    hash: '#/tools/text-to-speech',
+    hash: '/tools/text-to-speech',
     icon: Volume2,
     description:
       'Convert text to natural speech using browser speech synthesis. Adjust speed, pitch, and volume.',
@@ -150,7 +150,7 @@ const tools = [
   },
   {
     name: 'Speech to Text',
-    hash: '#/tools/speech-to-text',
+    hash: '/tools/speech-to-text',
     icon: Mic,
     description:
       'Convert voice to text in real-time using speech recognition. Perfect for dictation and note-taking.',
@@ -161,7 +161,7 @@ const tools = [
   },
   {
     name: 'Image Resizer',
-    hash: '#/tools/image-resizer',
+    hash: '/tools/image-resizer',
     icon: Scale,
     description:
       'Resize images to any dimension. Maintain aspect ratio, use presets, and download in multiple formats.',
@@ -172,7 +172,7 @@ const tools = [
   },
   {
     name: 'Background Remover',
-    hash: '#/tools/background-remover',
+    hash: '/tools/background-remover',
     icon: Scissors,
     description:
       'Remove image backgrounds instantly with color-based processing. Get transparent PNG output.',
@@ -183,7 +183,7 @@ const tools = [
   },
   {
     name: 'Color Grade Transfer',
-    hash: '#/tools/color-grade-transfer',
+    hash: '/tools/color-grade-transfer',
     icon: ImagePlus,
     description:
       'Transfer the color palette and mood from any reference photo to your image with AI-powered color analysis.',
@@ -194,7 +194,7 @@ const tools = [
   },
   {
     name: 'JSON Formatter',
-    hash: '#/tools/json-formatter',
+    hash: '/tools/json-formatter',
     icon: Braces,
     description:
       'Format, validate, and beautify JSON data. Detect errors, minify output, and convert between formats.',
@@ -205,7 +205,7 @@ const tools = [
   },
   {
     name: 'Base64 Encoder',
-    hash: '#/tools/base64-encoder',
+    hash: '/tools/base64-encoder',
     icon: Binary,
     description:
       'Encode text or files to Base64 and decode back. Essential for developers working with APIs and data URIs.',
@@ -221,7 +221,7 @@ const categories = [
     name: 'Image Tools',
     icon: ImagePlus,
     count: 6,
-    toolHash: '#/tools/image-compressor',
+    toolHash: '/tools/image-compressor',
     color: 'text-green-400',
     bg: 'bg-green-500/10',
     border: 'border-green-500/20',
@@ -230,7 +230,7 @@ const categories = [
     name: 'Video Tools',
     icon: Video,
     count: 2,
-    toolHash: '#/tools/youtube-thumbnail',
+    toolHash: '/tools/youtube-thumbnail',
     color: 'text-red-400',
     bg: 'bg-red-500/10',
     border: 'border-red-500/20',
@@ -239,7 +239,7 @@ const categories = [
     name: 'Text Tools',
     icon: Type,
     count: 5,
-    toolHash: '#/tools/word-counter',
+    toolHash: '/tools/word-counter',
     color: 'text-cyan-400',
     bg: 'bg-cyan-500/10',
     border: 'border-cyan-500/20',
@@ -248,7 +248,7 @@ const categories = [
     name: 'Security Tools',
     icon: ShieldCheck,
     count: 1,
-    toolHash: '#/tools/password-generator',
+    toolHash: '/tools/password-generator',
     color: 'text-purple-400',
     bg: 'bg-purple-500/10',
     border: 'border-purple-500/20',
@@ -257,7 +257,7 @@ const categories = [
     name: 'Developer Tools',
     icon: Braces,
     count: 3,
-    toolHash: '#/tools/json-formatter',
+    toolHash: '/tools/json-formatter',
     color: 'text-yellow-400',
     bg: 'bg-yellow-500/10',
     border: 'border-yellow-500/20',
@@ -266,7 +266,7 @@ const categories = [
     name: 'PDF Tools',
     icon: FileImage,
     count: 2,
-    toolHash: '#/tools/image-to-pdf',
+    toolHash: '/tools/image-to-pdf',
     color: 'text-orange-400',
     bg: 'bg-orange-500/10',
     border: 'border-orange-500/20',
@@ -377,14 +377,14 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             <button
-              onClick={() => onNavigate('#/tools/password-generator')}
+              onClick={() => onNavigate('/tools/password-generator')}
               className="cta-primary inline-flex items-center gap-2.5 px-8 py-4 rounded-xl text-white font-semibold text-sm animate-btn-glow"
             >
               <span>Explore Tools</span>
               <ArrowRight className="h-4 w-4" />
             </button>
             <button
-              onClick={() => onNavigate('#/blog')}
+              onClick={() => onNavigate('/blog')}
               className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl border border-[#222222] text-white font-semibold text-sm hover:border-[#8A2BE2]/50 hover:bg-white/5 transition-all duration-300"
             >
               <BookOpen className="h-4 w-4" />
@@ -531,7 +531,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <button
-                onClick={() => onNavigate('#/pricing')}
+                onClick={() => onNavigate('/pricing')}
                 className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-white font-semibold text-sm animate-btn-glow"
               >
                 <Sparkles className="h-4 w-4" />
@@ -562,7 +562,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
               </p>
             </div>
             <button
-              onClick={() => onNavigate('#/blog')}
+              onClick={() => onNavigate('/blog')}
               className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-[#8A2BE2] hover:gap-3 transition-all duration-300"
             >
               View All
@@ -593,7 +593,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             ].map((post) => (
               <button
                 key={post.title}
-                onClick={() => onNavigate('#/blog')}
+                onClick={() => onNavigate('/blog')}
                 className="tool-card p-6 text-left group"
               >
                 <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-medium border ${post.color} mb-4`}>
@@ -616,7 +616,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
           {/* Mobile View All */}
           <div className="sm:hidden mt-6 text-center">
             <button
-              onClick={() => onNavigate('#/blog')}
+              onClick={() => onNavigate('/blog')}
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#8A2BE2]"
             >
               View All Posts

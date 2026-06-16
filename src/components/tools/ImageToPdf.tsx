@@ -39,17 +39,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'PDF to Image',
-    hash: '#/tools/pdf-to-image',
+    hash: '/tools/pdf-to-image',
     description: 'Convert PDF pages to image files.',
   },
   {
     name: 'Image Resizer',
-    hash: '#/tools/image-resizer',
+    hash: '/tools/image-resizer',
     description: 'Resize images to any dimension easily.',
   },
   {
     name: 'Image Compressor',
-    hash: '#/tools/image-compressor',
+    hash: '/tools/image-compressor',
     description: 'Compress images without losing quality.',
   },
 ];
@@ -184,6 +184,32 @@ export default function ImageToPdf({ onNavigate }: ImageToPdfProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Image to PDF Converter — Turn Your Images Into PDF Documents Free</h2>
+        <p>Converting images to PDF is one of the most common document management tasks, whether you are creating a portfolio, assembling a presentation, or sharing multiple photos in a single file. Our free Image to PDF Converter lets you upload multiple images, rearrange their order, and generate a professional PDF document — all processed locally in your browser for maximum privacy and speed.</p>
+        <h3>Why Convert Images to PDF?</h3>
+        <p>PDF (Portable Document Format) is the universal standard for sharing documents across different devices and operating systems. Unlike individual image files, a PDF preserves the exact layout, formatting, and quality of your content regardless of the viewer's software or platform. PDFs are ideal for sending photo collections, creating digital portfolios, submitting scanned documents, and archiving visual content. They also support password protection and digital signatures for added security.</p>
+        <h3>How It Works</h3>
+        <p>This tool uses the jsPDF library to create PDF documents entirely in your browser. Each image you upload is placed on its own page in the PDF, scaled to fit A4 dimensions while maintaining the original aspect ratio. The conversion process preserves the original image quality — no lossy compression is applied during embedding. You can add as many images as you need, rearrange them with up and down arrow buttons, and remove individual images before generating the final PDF.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Upload multiple images at once — JPEG, PNG, WebP, BMP, and GIF supported</li>
+          <li>Drag and drop or click to browse for files</li>
+          <li>Rearrange image order with intuitive up and down controls</li>
+          <li>Remove individual images before converting</li>
+          <li>Each image gets its own A4 page with proper centering and aspect ratio preservation</li>
+          <li>Original image quality is maintained — no recompression or quality loss</li>
+          <li>Complete client-side processing — your images never leave your device</li>
+        </ul>
+        <h3>Use Cases</h3>
+        <ul>
+          <li>Create a PDF photo album from vacation or event pictures</li>
+          <li>Convert scanned document images into a single searchable PDF</li>
+          <li>Assemble design mockups or mood boards into a shareable document</li>
+          <li>Combine product images into a catalog for business presentations</li>
+          <li>Prepare receipt images for expense reporting and reimbursement</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {/* Upload Area */}

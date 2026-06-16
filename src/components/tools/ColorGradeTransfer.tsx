@@ -424,9 +424,9 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
   ];
 
   const relatedTools = [
-    { name: 'Image Compressor', hash: '#/tools/image-compressor', description: 'Compress images without losing quality' },
-    { name: 'Image Resizer', hash: '#/tools/image-resizer', description: 'Resize images to any dimension' },
-    { name: 'Background Remover', hash: '#/tools/background-remover', description: 'Remove image backgrounds instantly' },
+    { name: 'Image Compressor', hash: '/tools/image-compressor', description: 'Compress images without losing quality' },
+    { name: 'Image Resizer', hash: '/tools/image-resizer', description: 'Resize images to any dimension' },
+    { name: 'Background Remover', hash: '/tools/background-remover', description: 'Remove image backgrounds instantly' },
   ];
 
   return (
@@ -437,6 +437,31 @@ export default function ColorGradeTransfer({ onNavigate }: ColorGradeTransferPro
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Color Grade Transfer — Apply Professional Color Grading to Your Photos</h2>
+        <p>Color grading is the process of altering the color palette of an image to achieve a specific mood, atmosphere, or cinematic look. Professional photographers and filmmakers spend hours perfecting color grades, but our free Color Grade Transfer tool lets you apply the look of any reference photo to your own image in seconds. Using statistical color mapping and look-up table (LUT) techniques, this tool transfers the entire color palette from a reference image onto your target photo — all processed locally in your browser.</p>
+        <h3>Understanding Color Grading and LUTs</h3>
+        <p>In professional photo and video editing, color grading is typically achieved through Look-Up Tables (LUTs) — mathematical formulas that map input color values to output color values. A LUT takes each pixel's RGB values and transforms them according to predefined rules, shifting colors from the original palette to a new one. Our tool automatically generates a LUT by analyzing the statistical distribution of colors in both your source image and the reference image, computing mean and standard deviation shifts for each color channel, then applying these transformations with controllable intensity.</p>
+        <h3>Cinematic Looks and Color Transfer Techniques</h3>
+        <p>Every film and professional photograph has a distinct color grade that sets its mood. Warm sunset tones evoke nostalgia and romance. Cool ocean hues create calm and serenity. Moody forest greens add mystery and depth. Vintage film looks bring retro charm with warm, faded tones. Neon city palettes pulse with energy through purple and pink highlights. Desert sand grades feel earthy and grounded. Our tool includes sample reference photos for these popular looks, or you can upload any image as your reference to create a truly unique color grade.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Transfer the complete color palette from any reference photo to your image</li>
+          <li>Six built-in sample reference photos: Warm Sunset, Cool Ocean, Moody Forest, Vintage Film, Neon City, and Desert Sand</li>
+          <li>Upload your own reference photo for unlimited creative possibilities</li>
+          <li>Adjustable intensity slider from 0% (no change) to 100% (full transfer)</li>
+          <li>Preserve Details option maintains original luminance structure for natural-looking results</li>
+          <li>Download the color-graded result as a high-quality PNG</li>
+          <li>Complete client-side processing — your photos never leave your device</li>
+        </ul>
+        <h3>Tips for Natural-Looking Color Grades</h3>
+        <ul>
+          <li>Choose reference photos with similar lighting conditions for the most natural results</li>
+          <li>Start with an intensity of 50-75% for a subtle effect, then adjust to taste</li>
+          <li>Enable "Preserve Details" to prevent the color transfer from flattening highlights and shadows</li>
+          <li>Both well-exposed input and reference images produce the best color transfers</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {/* PRO Badge */}

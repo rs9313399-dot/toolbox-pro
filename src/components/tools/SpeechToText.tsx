@@ -46,17 +46,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'Text to Speech',
-    hash: '#/tools/text-to-speech',
+    hash: '/tools/text-to-speech',
     description: 'Convert text to spoken audio using browser speech synthesis.',
   },
   {
     name: 'Word Counter',
-    hash: '#/tools/word-counter',
+    hash: '/tools/word-counter',
     description: 'Count words, characters, and more in your text.',
   },
   {
     name: 'JSON Formatter',
-    hash: '#/tools/json-formatter',
+    hash: '/tools/json-formatter',
     description: 'Format, validate, and beautify JSON data.',
   },
 ];
@@ -230,6 +230,31 @@ export default function SpeechToText({ onNavigate }: SpeechToTextProps) {
         faqItems={faqItems}
         relatedTools={relatedTools}
         onNavigate={onNavigate}
+        seoContent={`
+          <h2>Speech to Text — Free Online Voice Dictation and Transcription</h2>
+          <p>Speech-to-text technology, also known as speech recognition or voice dictation, converts spoken words into written text in real time. Our free online Speech to Text tool uses your browser's built-in Web Speech API to transcribe your voice directly in the browser, with no software installation or account required. Simply click the microphone button, start speaking, and watch your words appear as text instantly.</p>
+          <h3>Accessibility Benefits of Voice Typing</h3>
+          <p>Voice dictation is a game-changer for accessibility. People with motor disabilities, repetitive strain injuries, or conditions like carpal tunnel syndrome can compose text without typing. Individuals with dyslexia or other learning disabilities can express their thoughts more fluently through speech than through writing. Multilingual users can dictate in their preferred language, with support for over 15 languages including English, Spanish, French, German, Chinese, Japanese, Arabic, and Hindi. The Web Speech API makes these accessibility features available to everyone with just a web browser.</p>
+          <h3>Use Cases for Speech Recognition</h3>
+          <p>Beyond accessibility, speech-to-text has countless practical applications. Students record lecture notes without looking away from the board. Professionals dictate emails and documents while on the go. Writers capture ideas and first drafts through natural speech, overcoming writer's block. Journalists transcribe interviews in real time. Customer service teams create call summaries automatically. Medical professionals dictate clinical notes hands-free. Continuous recognition mode keeps the microphone active for extended dictation sessions, making it ideal for long-form content creation.</p>
+          <h3>Key Features</h3>
+          <ul>
+            <li>Real-time transcription with interim results shown as you speak</li>
+            <li>18 supported languages including English, Spanish, French, German, Chinese, Japanese, Korean, Arabic, and Hindi</li>
+            <li>Continuous recognition mode for extended dictation sessions</li>
+            <li>One-click copy of the full transcript to clipboard</li>
+            <li>Word count and character count displayed in real time</li>
+            <li>Browser-based processing — no software download required</li>
+          </ul>
+          <h3>Tips for Accurate Transcription</h3>
+          <ul>
+            <li>Use a quality microphone in a quiet environment for best accuracy</li>
+            <li>Speak clearly and at a moderate pace — rushing reduces accuracy</li>
+            <li>Select the correct language and dialect for your speech (e.g., en-US vs en-GB)</li>
+            <li>Enable continuous mode for longer dictation to avoid interruptions</li>
+            <li>Use Google Chrome or Microsoft Edge for the most reliable speech recognition performance</li>
+          </ul>
+        `}
       >
         <div className="flex flex-col items-center justify-center py-16 text-center">
           <MicOff className="h-16 w-16 text-[#555555] mb-4" />
@@ -255,6 +280,31 @@ export default function SpeechToText({ onNavigate }: SpeechToTextProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Speech to Text — Free Online Voice Dictation and Transcription</h2>
+        <p>Speech-to-text technology, also known as speech recognition or voice dictation, converts spoken words into written text in real time. Our free online Speech to Text tool uses your browser's built-in Web Speech API to transcribe your voice directly in the browser, with no software installation or account required. Simply click the microphone button, start speaking, and watch your words appear as text instantly.</p>
+        <h3>Accessibility Benefits of Voice Typing</h3>
+        <p>Voice dictation is a game-changer for accessibility. People with motor disabilities, repetitive strain injuries, or conditions like carpal tunnel syndrome can compose text without typing. Individuals with dyslexia or other learning disabilities can express their thoughts more fluently through speech than through writing. Multilingual users can dictate in their preferred language, with support for over 15 languages including English, Spanish, French, German, Chinese, Japanese, Arabic, and Hindi. The Web Speech API makes these accessibility features available to everyone with just a web browser.</p>
+        <h3>Use Cases for Speech Recognition</h3>
+        <p>Beyond accessibility, speech-to-text has countless practical applications. Students record lecture notes without looking away from the board. Professionals dictate emails and documents while on the go. Writers capture ideas and first drafts through natural speech, overcoming writer's block. Journalists transcribe interviews in real time. Customer service teams create call summaries automatically. Medical professionals dictate clinical notes hands-free. Continuous recognition mode keeps the microphone active for extended dictation sessions, making it ideal for long-form content creation.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Real-time transcription with interim results shown as you speak</li>
+          <li>18 supported languages including English, Spanish, French, German, Chinese, Japanese, Korean, Arabic, and Hindi</li>
+          <li>Continuous recognition mode for extended dictation sessions</li>
+          <li>One-click copy of the full transcript to clipboard</li>
+          <li>Word count and character count displayed in real time</li>
+          <li>Browser-based processing — no software download required</li>
+        </ul>
+        <h3>Tips for Accurate Transcription</h3>
+        <ul>
+          <li>Use a quality microphone in a quiet environment for best accuracy</li>
+          <li>Speak clearly and at a moderate pace — rushing reduces accuracy</li>
+          <li>Select the correct language and dialect for your speech (e.g., en-US vs en-GB)</li>
+          <li>Enable continuous mode for longer dictation to avoid interruptions</li>
+          <li>Use Google Chrome or Microsoft Edge for the most reliable speech recognition performance</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {/* Language Selector */}

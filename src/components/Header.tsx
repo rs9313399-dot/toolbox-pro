@@ -8,37 +8,37 @@ const toolCategories = [
   {
     group: 'Image & PDF',
     items: [
-      { name: 'Image Compressor', hash: '#/tools/image-compressor', desc: 'Compress images' },
-      { name: 'Image Resizer', hash: '#/tools/image-resizer', desc: 'Resize images' },
-      { name: 'Background Remover', hash: '#/tools/background-remover', desc: 'Remove backgrounds' },
-      { name: 'Color Grade Transfer', hash: '#/tools/color-grade-transfer', desc: 'Transfer color moods' },
-      { name: 'Image to PDF', hash: '#/tools/image-to-pdf', desc: 'Images to PDF' },
-      { name: 'PDF to Image', hash: '#/tools/pdf-to-image', desc: 'PDF to images' },
+      { name: 'Image Compressor', path: '/tools/image-compressor', desc: 'Compress images' },
+      { name: 'Image Resizer', path: '/tools/image-resizer', desc: 'Resize images' },
+      { name: 'Background Remover', path: '/tools/background-remover', desc: 'Remove backgrounds' },
+      { name: 'Color Grade Transfer', path: '/tools/color-grade-transfer', desc: 'Transfer color moods' },
+      { name: 'Image to PDF', path: '/tools/image-to-pdf', desc: 'Images to PDF' },
+      { name: 'PDF to Image', path: '/tools/pdf-to-image', desc: 'PDF to images' },
     ],
   },
   {
     group: 'Text & Speech',
     items: [
-      { name: 'Word Counter', hash: '#/tools/word-counter', desc: 'Count words & chars' },
-      { name: 'Text to Speech', hash: '#/tools/text-to-speech', desc: 'Read text aloud' },
-      { name: 'Speech to Text', hash: '#/tools/speech-to-text', desc: 'Voice to text' },
+      { name: 'Word Counter', path: '/tools/word-counter', desc: 'Count words & chars' },
+      { name: 'Text to Speech', path: '/tools/text-to-speech', desc: 'Read text aloud' },
+      { name: 'Speech to Text', path: '/tools/speech-to-text', desc: 'Voice to text' },
     ],
   },
   {
     group: 'Developer',
     items: [
-      { name: 'JSON Formatter', hash: '#/tools/json-formatter', desc: 'Format & validate JSON' },
-      { name: 'Base64 Encoder', hash: '#/tools/base64-encoder', desc: 'Encode/decode Base64' },
-      { name: 'QR Code Generator', hash: '#/tools/qr-code-generator', desc: 'Generate QR codes' },
-      { name: 'URL Shortener', hash: '#/tools/url-shortener', desc: 'Shorten URLs' },
+      { name: 'JSON Formatter', path: '/tools/json-formatter', desc: 'Format & validate JSON' },
+      { name: 'Base64 Encoder', path: '/tools/base64-encoder', desc: 'Encode/decode Base64' },
+      { name: 'QR Code Generator', path: '/tools/qr-code-generator', desc: 'Generate QR codes' },
+      { name: 'URL Shortener', path: '/tools/url-shortener', desc: 'Shorten URLs' },
     ],
   },
   {
     group: 'Security & Social',
     items: [
-      { name: 'Password Generator', hash: '#/tools/password-generator', desc: 'Secure passwords' },
-      { name: 'YouTube Thumbnail', hash: '#/tools/youtube-thumbnail', desc: 'Download thumbnails' },
-      { name: 'Instagram Reel', hash: '#/tools/instagram-reel', desc: 'Download reels' },
+      { name: 'Password Generator', path: '/tools/password-generator', desc: 'Secure passwords' },
+      { name: 'YouTube Thumbnail', path: '/tools/youtube-thumbnail', desc: 'Download thumbnails' },
+      { name: 'Instagram Reel', path: '/tools/instagram-reel', desc: 'Download reels' },
     ],
   },
 ];
@@ -46,18 +46,18 @@ const toolCategories = [
 const allTools = toolCategories.flatMap(c => c.items);
 
 const navLinks = [
-  { name: 'Home', hash: '#/' },
-  { name: 'Blog', hash: '#/blog' },
-  { name: 'Pricing', hash: '#/pricing' },
-  { name: 'Contact', hash: '#/contact' },
+  { name: 'Home', path: '/' },
+  { name: 'Blog', path: '/blog' },
+  { name: 'Pricing', path: '/pricing' },
+  { name: 'Contact', path: '/contact' },
 ];
 
 interface HeaderProps {
-  currentHash: string;
-  onNavigate: (hash: string) => void;
+  currentPath: string;
+  onNavigate: (path: string) => void;
 }
 
-export default function Header({ currentHash, onNavigate }: HeaderProps) {
+export default function Header({ currentPath, onNavigate }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -68,19 +68,15 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdown on route change
-  useEffect(() => {
-    setToolsOpen(false);
-    setMobileOpen(false);
-  }, [currentHash]);
+  // Menus close via handleNav on navigation clicks
 
-  const handleNav = (hash: string) => {
-    onNavigate(hash);
+  const handleNav = (path: string) => {
+    onNavigate(path);
     setMobileOpen(false);
     setToolsOpen(false);
   };
 
-  const isToolsActive = currentHash.startsWith('#/tools');
+  const isToolsActive = currentPath.startsWith('/tools');
 
   return (
     <header
@@ -94,7 +90,7 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
         <div className="flex h-18 items-center justify-between">
           {/* Logo */}
           <button
-            onClick={() => handleNav('#/')}
+            onClick={() => handleNav('/')}
             className="flex items-center gap-2.5 group"
           >
             <div className="relative">
@@ -115,9 +111,9 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
             <button
-              onClick={() => handleNav('#/')}
+              onClick={() => handleNav('/')}
               className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                currentHash === '#/' || currentHash === '#'
+                currentPath === '/'
                   ? 'text-white bg-white/5'
                   : 'text-[#AAAAAA] hover:text-white hover:bg-white/5'
               }`}
@@ -158,10 +154,10 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
                     <p className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#555555]">{cat.group}</p>
                     {cat.items.map((tool) => (
                       <button
-                        key={tool.hash}
-                        onClick={() => handleNav(tool.hash)}
+                        key={tool.path}
+                        onClick={() => handleNav(tool.path)}
                         className={`w-full text-left px-3 py-2 rounded-lg transition-all duration-200 group ${
-                          currentHash === tool.hash
+                          currentPath === tool.path
                             ? 'text-white bg-[#8A2BE2]/10 border border-[#8A2BE2]/20'
                             : 'text-[#AAAAAA] hover:text-white hover:bg-white/5'
                         }`}
@@ -181,10 +177,10 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
 
             {navLinks.slice(1).map((link) => (
               <button
-                key={link.hash}
-                onClick={() => handleNav(link.hash)}
+                key={link.path}
+                onClick={() => handleNav(link.path)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                  currentHash === link.hash || (link.hash === '#/blog' && currentHash.startsWith('#/blog'))
+                  currentPath === link.path || (link.path === '/blog' && currentPath.startsWith('/blog'))
                     ? 'text-white bg-white/5'
                     : 'text-[#AAAAAA] hover:text-white hover:bg-white/5'
                 }`}
@@ -195,7 +191,7 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
 
             {/* CTA */}
             <button
-              onClick={() => handleNav('#/pricing')}
+              onClick={() => handleNav('/pricing')}
               className="ml-3 cta-primary px-5 py-2 rounded-xl text-white text-sm font-semibold inline-flex items-center gap-1.5"
             >
               <Crown className="h-3.5 w-3.5" />
@@ -226,9 +222,9 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
       >
         <div className="px-4 py-5 space-y-1">
           <button
-            onClick={() => handleNav('#/')}
+            onClick={() => handleNav('/')}
             className={`block w-full text-left px-4 py-3 text-sm font-medium rounded-lg transition-all ${
-              currentHash === '#/' || currentHash === '#'
+              currentPath === '/' || currentPath === ''
                 ? 'text-white bg-white/5'
                 : 'text-[#AAAAAA] hover:text-white hover:bg-white/5'
             }`}
@@ -245,10 +241,10 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
                 <p className="px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#444444]">{cat.group}</p>
                 {cat.items.map((tool) => (
                   <button
-                    key={tool.hash}
-                    onClick={() => handleNav(tool.hash)}
+                    key={tool.path}
+                    onClick={() => handleNav(tool.path)}
                     className={`block w-full text-left px-4 py-2.5 text-sm rounded-lg transition-all ${
-                      currentHash === tool.hash
+                      currentPath === tool.path
                         ? 'text-white bg-white/5'
                         : 'text-[#AAAAAA] hover:text-white hover:bg-white/5'
                     }`}
@@ -263,10 +259,10 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
           <div className="border-t border-white/5 pt-2">
             {navLinks.slice(1).map((link) => (
               <button
-                key={link.hash}
-                onClick={() => handleNav(link.hash)}
+                key={link.path}
+                onClick={() => handleNav(link.path)}
                 className={`block w-full text-left px-4 py-3 text-sm font-medium rounded-lg transition-all ${
-                  currentHash === link.hash || (link.hash === '#/blog' && currentHash.startsWith('#/blog'))
+                  currentPath === link.path || (link.path === '/blog' && currentPath.startsWith('/blog'))
                     ? 'text-white bg-white/5'
                     : 'text-[#AAAAAA] hover:text-white hover:bg-white/5'
                 }`}
@@ -278,7 +274,7 @@ export default function Header({ currentHash, onNavigate }: HeaderProps) {
 
           <div className="pt-2 px-4">
             <button
-              onClick={() => handleNav('#/pricing')}
+              onClick={() => handleNav('/pricing')}
               className="w-full cta-primary py-3 rounded-xl text-white text-sm font-semibold inline-flex items-center justify-center gap-1.5"
             >
               <Crown className="h-3.5 w-3.5" />

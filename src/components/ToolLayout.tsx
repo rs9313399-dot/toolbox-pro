@@ -23,6 +23,7 @@ interface ToolLayoutProps {
   relatedTools: RelatedTool[];
   children: React.ReactNode;
   onNavigate: (hash: string) => void;
+  seoContent?: string;
 }
 
 export default function ToolLayout({
@@ -33,6 +34,7 @@ export default function ToolLayout({
   relatedTools,
   children,
   onNavigate,
+  seoContent,
 }: ToolLayoutProps) {
   return (
     <main className="min-h-screen pt-20 pb-12">
@@ -42,7 +44,7 @@ export default function ToolLayout({
           <ol className="flex items-center gap-1.5 text-sm text-[#555555]">
             <li>
               <button
-                onClick={() => onNavigate('#/')}
+                onClick={() => onNavigate('/')}
                 className="hover:text-white transition-colors duration-300"
               >
                 Home
@@ -53,7 +55,7 @@ export default function ToolLayout({
             </li>
             <li>
               <button
-                onClick={() => onNavigate('#/')}
+                onClick={() => onNavigate('/')}
                 className="hover:text-white transition-colors duration-300"
               >
                 Tools
@@ -81,22 +83,32 @@ export default function ToolLayout({
           </p>
         </div>
 
-        {/* Banner Ad */}
-        <div className="mb-8">
-          <AdPlaceholder size="banner" />
-        </div>
-
-        {/* Tool Interface */}
+        {/* Tool Interface — BEFORE ads so content is visible first */}
         <div className="bg-[#111111] border border-[#1a1a1a] rounded-2xl p-6 sm:p-8 mb-10 relative overflow-hidden">
           {/* Subtle top border glow */}
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#8A2BE2]/30 to-transparent" />
           {children}
         </div>
 
+        {/* SEO Content Section — Rich descriptive content for AdSense compliance */}
+        {seoContent && (
+          <section className="mb-10 bg-[#0a0a0a] border border-[#1a1a1a] rounded-2xl p-6 sm:p-8">
+            <div
+              className="prose prose-invert prose-sm max-w-none text-[#AAAAAA] leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: seoContent }}
+            />
+          </section>
+        )}
+
+        {/* Banner Ad — AFTER content so Google sees publisher content first */}
+        <div className="mb-8">
+          <AdPlaceholder size="banner" />
+        </div>
+
         {/* FAQ Section */}
         <FAQSection items={faqItems} pageTitle={title} />
 
-        {/* In-content Ad */}
+        {/* In-content Ad — After FAQ (more content before ad) */}
         <div className="my-10">
           <AdPlaceholder size="in-content" />
         </div>

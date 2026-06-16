@@ -19,4 +19,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://toolboxpro.com/sitemap.xml
+Sitemap: https://toolbox-pro-lake.vercel.app/sitemap.xml

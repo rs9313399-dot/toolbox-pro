@@ -47,17 +47,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'Image Compressor',
-    hash: '#/tools/image-compressor',
+    hash: '/tools/image-compressor',
     description: 'Compress images without losing quality.',
   },
   {
     name: 'Image to PDF',
-    hash: '#/tools/image-to-pdf',
+    hash: '/tools/image-to-pdf',
     description: 'Convert images to PDF documents.',
   },
   {
     name: 'Background Remover',
-    hash: '#/tools/background-remover',
+    hash: '/tools/background-remover',
     description: 'Remove image backgrounds instantly.',
   },
 ];
@@ -234,6 +234,31 @@ export default function ImageResizer({ onNavigate }: ImageResizerProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Free Online Image Resizer — Resize Images to Any Dimensions</h2>
+        <p>Every digital platform has specific image dimension requirements, and uploading images with the wrong dimensions can result in cropping, stretching, or poor visual quality. Our free online Image Resizer lets you resize any image to exact pixel dimensions directly in your browser, with support for aspect ratio locking, preset social media sizes, and multiple output formats. All processing happens locally on your device for maximum speed and complete privacy.</p>
+        <h3>Social Media Image Dimensions Guide</h3>
+        <p>Each social media platform has its own recommended image dimensions. Instagram posts look best at 1080x1080 pixels (square) or 1080x1350 (portrait). Facebook cover photos require 820x312 pixels. Twitter headers need 1500x500 pixels. YouTube thumbnails are displayed at 1280x720 pixels (16:9 aspect ratio). Using the correct dimensions ensures your images appear crisp and properly framed without unwanted cropping. Our tool includes built-in presets for these common sizes, so you can resize with a single click.</p>
+        <h3>Understanding Aspect Ratios</h3>
+        <p>An aspect ratio is the proportional relationship between an image's width and height, expressed as two numbers separated by a colon (e.g., 16:9, 4:3, 1:1). Maintaining the correct aspect ratio is crucial — stretching an image to different proportions distorts the content and looks unprofessional. Our aspect ratio lock feature ensures that when you change one dimension, the other adjusts automatically to preserve the original proportions. This prevents any stretching or squishing of your images while allowing you to achieve the desired size.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Resize images to any custom width and height in pixels</li>
+          <li>Aspect ratio lock toggle — maintain proportions or set exact dimensions independently</li>
+          <li>Preset sizes for Instagram Post (1080x1080), Facebook Cover (820x312), Twitter Header (1500x500), and YouTube Thumbnail (1280x720)</li>
+          <li>Output format selection: PNG (lossless), JPEG (lossy, smaller), or WebP (modern, excellent compression)</li>
+          <li>Quality slider for JPEG and WebP output (1%–100%)</li>
+          <li>Real-time preview of the resized image with file size estimation</li>
+          <li>Drag and drop or click to upload — supports JPEG, PNG, and WebP input</li>
+        </ul>
+        <h3>Tips for Optimal Image Sizing</h3>
+        <ul>
+          <li>Always resize images to the exact dimensions required by your platform before uploading</li>
+          <li>Downscaling images preserves quality better than upscaling — start with the highest resolution source available</li>
+          <li>Use PNG for graphics with transparency and JPEG for photographs to get the best quality-to-size ratio</li>
+          <li>Consider using WebP format for web images — it offers 25-35% smaller files than JPEG with comparable quality</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {!originalFile ? (

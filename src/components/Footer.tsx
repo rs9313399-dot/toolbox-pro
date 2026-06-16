@@ -4,22 +4,22 @@ import { Twitter, Github, Youtube, Mail, Heart } from 'lucide-react';
 import Image from 'next/image';
 
 interface FooterProps {
-  onNavigate: (hash: string) => void;
+  onNavigate: (path: string) => void;
 }
 
 const toolLinks = [
-  { name: 'Password Generator', hash: '#/tools/password-generator' },
-  { name: 'Word Counter', hash: '#/tools/word-counter' },
-  { name: 'Image Compressor', hash: '#/tools/image-compressor' },
-  { name: 'YouTube Thumbnail', hash: '#/tools/youtube-thumbnail' },
-  { name: 'Instagram Reel', hash: '#/tools/instagram-reel' },
+  { name: 'Password Generator', path: '/tools/password-generator' },
+  { name: 'Word Counter', path: '/tools/word-counter' },
+  { name: 'Image Compressor', path: '/tools/image-compressor' },
+  { name: 'YouTube Thumbnail', path: '/tools/youtube-thumbnail' },
+  { name: 'Instagram Reel', path: '/tools/instagram-reel' },
 ];
 
 const legalLinks = [
-  { name: 'Privacy Policy', hash: '#/privacy-policy' },
-  { name: 'Terms of Service', hash: '#/terms-of-service' },
-  { name: 'Disclaimer', hash: '#/disclaimer' },
-  { name: 'About', hash: '#/about' },
+  { name: 'Privacy Policy', path: '/privacy-policy' },
+  { name: 'Terms of Service', path: '/terms-of-service' },
+  { name: 'Disclaimer', path: '/disclaimer' },
+  { name: 'About', path: '/about' },
 ];
 
 const socialLinks = [
@@ -37,7 +37,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           {/* Column 1: Logo & Tagline */}
           <div className="sm:col-span-2 lg:col-span-1">
             <button
-              onClick={() => onNavigate('#/')}
+              onClick={() => onNavigate('/')}
               className="flex items-center gap-2.5 mb-5 group"
             >
               <Image
@@ -78,7 +78,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-3">
               <li>
                 <button
-                  onClick={() => onNavigate('#/')}
+                  onClick={() => onNavigate('/')}
                   className="text-sm text-[#888888] hover:text-white transition-colors duration-300"
                 >
                   Home
@@ -86,7 +86,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('#/blog')}
+                  onClick={() => onNavigate('/blog')}
                   className="text-sm text-[#888888] hover:text-white transition-colors duration-300"
                 >
                   Blog
@@ -94,7 +94,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('#/contact')}
+                  onClick={() => onNavigate('/contact')}
                   className="text-sm text-[#888888] hover:text-white transition-colors duration-300"
                 >
                   Contact
@@ -102,7 +102,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('#/about')}
+                  onClick={() => onNavigate('/about')}
                   className="text-sm text-[#888888] hover:text-white transition-colors duration-300"
                 >
                   About
@@ -118,9 +118,9 @@ export default function Footer({ onNavigate }: FooterProps) {
             </h3>
             <ul className="space-y-3">
               {toolLinks.map((tool) => (
-                <li key={tool.hash}>
+                <li key={tool.path}>
                   <button
-                    onClick={() => onNavigate(tool.hash)}
+                    onClick={() => onNavigate(tool.path)}
                     className="text-sm text-[#888888] hover:text-white transition-colors duration-300"
                   >
                     {tool.name}
@@ -137,9 +137,9 @@ export default function Footer({ onNavigate }: FooterProps) {
             </h3>
             <ul className="space-y-3">
               {legalLinks.map((link) => (
-                <li key={link.hash}>
+                <li key={link.path}>
                   <button
-                    onClick={() => onNavigate(link.hash)}
+                    onClick={() => onNavigate(link.path)}
                     className="text-sm text-[#888888] hover:text-white transition-colors duration-300"
                   >
                     {link.name}

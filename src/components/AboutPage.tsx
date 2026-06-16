@@ -86,7 +86,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               No signup, no downloads, no limits. Just powerful tools that work.
             </p>
             <button
-              onClick={() => onNavigate('#/')}
+              onClick={() => onNavigate('/')}
               className="cta-primary inline-flex items-center gap-2 px-8 py-3 rounded-xl text-white font-semibold text-sm"
             >
               Explore All Tools

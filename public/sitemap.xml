@@ -1,207 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- ======================== -->
+  <!-- MAIN PAGES               -->
+  <!-- ======================== -->
   <url>
-    <loc>https://toolboxpro.com/</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/blog</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/contact</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/pricing</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/about</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/about</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/privacy-policy</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/contact</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- ======================== -->
+  <!-- LEGAL PAGES               -->
+  <!-- ======================== -->
+  <url>
+    <loc>https://toolbox-pro-lake.vercel.app/privacy-policy</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/terms-of-service</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/terms-of-service</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/disclaimer</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/disclaimer</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
-  <!-- Tools -->
+
+  <!-- ======================== -->
+  <!-- TOOLS (All 16)            -->
+  <!-- ======================== -->
   <url>
-    <loc>https://toolboxpro.com/#/tools/password-generator</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/password-generator</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/word-counter</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/word-counter</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/image-compressor</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/image-compressor</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/youtube-thumbnail</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/youtube-thumbnail</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/instagram-reel</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/instagram-reel</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/image-to-pdf</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/image-to-pdf</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/pdf-to-image</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/pdf-to-image</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/qr-code-generator</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/qr-code-generator</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/url-shortener</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/url-shortener</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/text-to-speech</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/text-to-speech</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/speech-to-text</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/speech-to-text</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/image-resizer</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/image-resizer</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/background-remover</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/background-remover</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/json-formatter</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/json-formatter</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/tools/base64-encoder</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/base64-encoder</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Blog Posts -->
   <url>
-    <loc>https://toolboxpro.com/#/blog/best-free-online-tools-2026</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/tools/color-grade-transfer</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ======================== -->
+  <!-- BLOG POSTS (All 12)       -->
+  <!-- ======================== -->
+  <url>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/best-free-online-tools-2026</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/compress-images-without-losing-quality</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/compress-images-without-losing-quality</loc>
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/ultimate-guide-to-strong-passwords</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/ultimate-guide-to-strong-passwords</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/youtube-thumbnail-best-practices</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/youtube-thumbnail-best-practices</loc>
     <lastmod>2026-03-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/word-count-matters-writing-for-web</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/word-count-matters-writing-for-web</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/essential-browser-tools-everyone-should-know</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/essential-browser-tools-everyone-should-know</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/qr-codes-business-marketing-guide</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/qr-codes-business-marketing-guide</loc>
     <lastmod>2026-02-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/image-formats-explained-jpeg-png-webp</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/image-formats-explained-jpeg-png-webp</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/text-to-speech-accessibility-guide</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/text-to-speech-accessibility-guide</loc>
     <lastmod>2026-01-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/json-formatter-developer-essentials</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/json-formatter-developer-essentials</loc>
     <lastmod>2025-12-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/base64-encoding-complete-guide</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/base64-encoding-complete-guide</loc>
     <lastmod>2025-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://toolboxpro.com/#/blog/remove-background-product-photos</loc>
+    <loc>https://toolbox-pro-lake.vercel.app/blog/remove-background-product-photos</loc>
     <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

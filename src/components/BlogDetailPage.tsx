@@ -69,12 +69,12 @@ const categoryColors: Record<string, string> = {
    ──────────────────────────────────────────── */
 
 const sidebarTools: RelatedTool[] = [
-  { name: 'Image Compressor', hash: '#/tools/image-compressor', icon: Image, color: 'text-green-400' },
-  { name: 'Password Generator', hash: '#/tools/password-generator', icon: KeyRound, color: 'text-purple-400' },
-  { name: 'QR Code Generator', hash: '#/tools/qr-code-generator', icon: QrCode, color: 'text-indigo-400' },
-  { name: 'JSON Formatter', hash: '#/tools/json-formatter', icon: Braces, color: 'text-yellow-400' },
-  { name: 'Base64 Encoder', hash: '#/tools/base64-encoder', icon: Binary, color: 'text-violet-400' },
-  { name: 'Background Remover', hash: '#/tools/background-remover', icon: Scissors, color: 'text-rose-400' },
+  { name: 'Image Compressor', hash: '/tools/image-compressor', icon: Image, color: 'text-green-400' },
+  { name: 'Password Generator', hash: '/tools/password-generator', icon: KeyRound, color: 'text-purple-400' },
+  { name: 'QR Code Generator', hash: '/tools/qr-code-generator', icon: QrCode, color: 'text-indigo-400' },
+  { name: 'JSON Formatter', hash: '/tools/json-formatter', icon: Braces, color: 'text-yellow-400' },
+  { name: 'Base64 Encoder', hash: '/tools/base64-encoder', icon: Binary, color: 'text-violet-400' },
+  { name: 'Background Remover', hash: '/tools/background-remover', icon: Scissors, color: 'text-rose-400' },
 ];
 
 /* ────────────────────────────────────────────
@@ -200,44 +200,44 @@ export default function BlogDetailPage({ slug, onNavigate, allPosts }: BlogDetai
     if (!post) return [];
     const toolMap: Record<string, RelatedTool[]> = {
       Security: [
-        { name: 'Password Generator', hash: '#/tools/password-generator', icon: KeyRound, color: 'text-purple-400' },
-        { name: 'Base64 Encoder', hash: '#/tools/base64-encoder', icon: Binary, color: 'text-violet-400' },
-        { name: 'URL Shortener', hash: '#/tools/url-shortener', icon: LinkIcon, color: 'text-blue-400' },
+        { name: 'Password Generator', hash: '/tools/password-generator', icon: KeyRound, color: 'text-purple-400' },
+        { name: 'Base64 Encoder', hash: '/tools/base64-encoder', icon: Binary, color: 'text-violet-400' },
+        { name: 'URL Shortener', hash: '/tools/url-shortener', icon: LinkIcon, color: 'text-blue-400' },
       ],
       Tutorials: [
-        { name: 'Image Compressor', hash: '#/tools/image-compressor', icon: Image, color: 'text-green-400' },
-        { name: 'Image Resizer', hash: '#/tools/image-resizer', icon: Scale, color: 'text-lime-400' },
-        { name: 'Background Remover', hash: '#/tools/background-remover', icon: Scissors, color: 'text-rose-400' },
+        { name: 'Image Compressor', hash: '/tools/image-compressor', icon: Image, color: 'text-green-400' },
+        { name: 'Image Resizer', hash: '/tools/image-resizer', icon: Scale, color: 'text-lime-400' },
+        { name: 'Background Remover', hash: '/tools/background-remover', icon: Scissors, color: 'text-rose-400' },
       ],
       'Content Creation': [
-        { name: 'YouTube Thumbnail', hash: '#/tools/youtube-thumbnail', icon: Image, color: 'text-red-400' },
-        { name: 'Image Resizer', hash: '#/tools/image-resizer', icon: Scale, color: 'text-lime-400' },
-        { name: 'QR Code Generator', hash: '#/tools/qr-code-generator', icon: QrCode, color: 'text-indigo-400' },
+        { name: 'YouTube Thumbnail', hash: '/tools/youtube-thumbnail', icon: Image, color: 'text-red-400' },
+        { name: 'Image Resizer', hash: '/tools/image-resizer', icon: Scale, color: 'text-lime-400' },
+        { name: 'QR Code Generator', hash: '/tools/qr-code-generator', icon: QrCode, color: 'text-indigo-400' },
       ],
       Writing: [
-        { name: 'Word Counter', hash: '#/tools/word-counter', icon: BookOpen, color: 'text-cyan-400' },
-        { name: 'Text to Speech', hash: '#/tools/text-to-speech', icon: Volume2, color: 'text-teal-400' },
-        { name: 'JSON Formatter', hash: '#/tools/json-formatter', icon: Braces, color: 'text-yellow-400' },
+        { name: 'Word Counter', hash: '/tools/word-counter', icon: BookOpen, color: 'text-cyan-400' },
+        { name: 'Text to Speech', hash: '/tools/text-to-speech', icon: Volume2, color: 'text-teal-400' },
+        { name: 'JSON Formatter', hash: '/tools/json-formatter', icon: Braces, color: 'text-yellow-400' },
       ],
       Productivity: [
-        { name: 'QR Code Generator', hash: '#/tools/qr-code-generator', icon: QrCode, color: 'text-indigo-400' },
-        { name: 'Password Generator', hash: '#/tools/password-generator', icon: KeyRound, color: 'text-purple-400' },
-        { name: 'Word Counter', hash: '#/tools/word-counter', icon: BookOpen, color: 'text-cyan-400' },
+        { name: 'QR Code Generator', hash: '/tools/qr-code-generator', icon: QrCode, color: 'text-indigo-400' },
+        { name: 'Password Generator', hash: '/tools/password-generator', icon: KeyRound, color: 'text-purple-400' },
+        { name: 'Word Counter', hash: '/tools/word-counter', icon: BookOpen, color: 'text-cyan-400' },
       ],
       Accessibility: [
-        { name: 'Text to Speech', hash: '#/tools/text-to-speech', icon: Volume2, color: 'text-teal-400' },
-        { name: 'Speech to Text', hash: '#/tools/speech-to-text', icon: Mic, color: 'text-sky-400' },
-        { name: 'Word Counter', hash: '#/tools/word-counter', icon: BookOpen, color: 'text-cyan-400' },
+        { name: 'Text to Speech', hash: '/tools/text-to-speech', icon: Volume2, color: 'text-teal-400' },
+        { name: 'Speech to Text', hash: '/tools/speech-to-text', icon: Mic, color: 'text-sky-400' },
+        { name: 'Word Counter', hash: '/tools/word-counter', icon: BookOpen, color: 'text-cyan-400' },
       ],
       Developer: [
-        { name: 'JSON Formatter', hash: '#/tools/json-formatter', icon: Braces, color: 'text-yellow-400' },
-        { name: 'Base64 Encoder', hash: '#/tools/base64-encoder', icon: Binary, color: 'text-violet-400' },
-        { name: 'URL Shortener', hash: '#/tools/url-shortener', icon: LinkIcon, color: 'text-blue-400' },
+        { name: 'JSON Formatter', hash: '/tools/json-formatter', icon: Braces, color: 'text-yellow-400' },
+        { name: 'Base64 Encoder', hash: '/tools/base64-encoder', icon: Binary, color: 'text-violet-400' },
+        { name: 'URL Shortener', hash: '/tools/url-shortener', icon: LinkIcon, color: 'text-blue-400' },
       ],
       Guides: [
-        { name: 'Image Compressor', hash: '#/tools/image-compressor', icon: Image, color: 'text-green-400' },
-        { name: 'QR Code Generator', hash: '#/tools/qr-code-generator', icon: QrCode, color: 'text-indigo-400' },
-        { name: 'Password Generator', hash: '#/tools/password-generator', icon: KeyRound, color: 'text-purple-400' },
+        { name: 'Image Compressor', hash: '/tools/image-compressor', icon: Image, color: 'text-green-400' },
+        { name: 'QR Code Generator', hash: '/tools/qr-code-generator', icon: QrCode, color: 'text-indigo-400' },
+        { name: 'Password Generator', hash: '/tools/password-generator', icon: KeyRound, color: 'text-purple-400' },
       ],
     };
     return toolMap[post.category] || toolMap.Guides;
@@ -287,7 +287,7 @@ export default function BlogDetailPage({ slug, onNavigate, allPosts }: BlogDetai
             The article you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
           <button
-            onClick={() => onNavigate('#/blog')}
+            onClick={() => onNavigate('/blog')}
             className="cta-primary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm"
           >
             Back to Blog
@@ -321,7 +321,7 @@ export default function BlogDetailPage({ slug, onNavigate, allPosts }: BlogDetai
           <ol className="flex items-center gap-1.5 text-sm text-[#555555]">
             <li>
               <button
-                onClick={() => onNavigate('#/')}
+                onClick={() => onNavigate('/')}
                 className="hover:text-white transition-colors duration-300"
               >
                 Home
@@ -330,7 +330,7 @@ export default function BlogDetailPage({ slug, onNavigate, allPosts }: BlogDetai
             <li><ChevronRight className="h-3 w-3" /></li>
             <li>
               <button
-                onClick={() => onNavigate('#/blog')}
+                onClick={() => onNavigate('/blog')}
                 className="hover:text-white transition-colors duration-300"
               >
                 Blog
@@ -453,7 +453,7 @@ export default function BlogDetailPage({ slug, onNavigate, allPosts }: BlogDetai
                   {relatedArticles.map((article) => (
                     <button
                       key={article.id}
-                      onClick={() => onNavigate(`#/blog/${article.slug}`)}
+                      onClick={() => onNavigate(`/blog/${article.slug}`)}
                       className="tool-card p-5 text-left group"
                     >
                       <span
@@ -479,7 +479,7 @@ export default function BlogDetailPage({ slug, onNavigate, allPosts }: BlogDetai
             {/* ── Back to Blog CTA ── */}
             <div className="py-8 border-t border-[#1a1a1a]">
               <button
-                onClick={() => onNavigate('#/blog')}
+                onClick={() => onNavigate('/blog')}
                 className="cta-primary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm"
               >
                 <ArrowRight className="h-4 w-4 rotate-180" />
@@ -523,7 +523,7 @@ export default function BlogDetailPage({ slug, onNavigate, allPosts }: BlogDetai
                   All tools run in your browser. No data uploaded, no signup needed.
                 </p>
                 <button
-                  onClick={() => onNavigate('#/')}
+                  onClick={() => onNavigate('/')}
                   className="w-full cta-primary py-2.5 rounded-xl text-white text-sm font-semibold"
                 >
                   Explore All Tools

@@ -33,17 +33,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'YouTube Thumbnail',
-    hash: '#/tools/youtube-thumbnail',
+    hash: '/tools/youtube-thumbnail',
     description: 'Download YouTube video thumbnails easily.',
   },
   {
     name: 'Image Compressor',
-    hash: '#/tools/image-compressor',
+    hash: '/tools/image-compressor',
     description: 'Compress images without losing quality.',
   },
   {
     name: 'Password Generator',
-    hash: '#/tools/password-generator',
+    hash: '/tools/password-generator',
     description: 'Create strong, secure passwords easily.',
   },
 ];
@@ -175,6 +175,25 @@ export default function InstagramReel({ onNavigate }: InstagramReelProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Instagram Reel Downloader — Save Instagram Reels for Free</h2>
+        <p>Instagram Reels have become one of the most popular formats for short-form video content, with over 200 billion reels played every day. Our free Instagram Reel Downloader lets you save any public Instagram reel to your device quickly and easily. Simply paste the reel URL and get a direct download link — no software installation, no account login, and no watermarks on your downloaded content.</p>
+        <h3>Why Download Instagram Reels?</h3>
+        <p>Content creators, social media managers, and marketers often need to download Instagram reels for various legitimate purposes. You might want to save your own reels for backup and repurposing on other platforms like TikTok, YouTube Shorts, or Facebook Reels. Marketers may need to analyze competitor content, create mood boards, or archive influencer collaborations. Educators and researchers might download reels for commentary, criticism, or fair-use analysis. Whatever your reason, our tool makes the process fast and straightforward.</p>
+        <h3>How to Download Instagram Reels</h3>
+        <p>The process is simple and takes just a few seconds. First, open the Instagram app or website and navigate to the reel you want to download. Tap the share button (paper airplane icon) and select "Copy Link." Then paste the URL into our downloader and click the download button. If the direct download is available, you will get an instant download link. If not, we provide trusted alternative download services as fallback options.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Download reels from any public Instagram account</li>
+          <li>Supports reel URLs, post URLs, and various Instagram link formats</li>
+          <li>No login required — we never ask for your Instagram credentials</li>
+          <li>Fast processing with direct download links when available</li>
+          <li>Fallback alternative services provided if direct download is unavailable</li>
+          <li>Works on all devices — desktop, tablet, and mobile</li>
+        </ul>
+        <h3>Important Legal Notice</h3>
+        <p>Always respect content creators' rights and copyright. Only download reels that you have permission to use. Downloading your own content for backup is generally fine, but redistributing others' content without permission may violate copyright law and Instagram's terms of service. Use downloaded content responsibly and always give credit to the original creator when appropriate.</p>
+      `}
     >
       <div className="space-y-6">
         {/* URL Input */}

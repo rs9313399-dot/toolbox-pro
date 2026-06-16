@@ -46,17 +46,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'Speech to Text',
-    hash: '#/tools/speech-to-text',
+    hash: '/tools/speech-to-text',
     description: 'Convert spoken words to text using your microphone.',
   },
   {
     name: 'Word Counter',
-    hash: '#/tools/word-counter',
+    hash: '/tools/word-counter',
     description: 'Count words, characters, and more in your text.',
   },
   {
     name: 'QR Code Generator',
-    hash: '#/tools/qr-code-generator',
+    hash: '/tools/qr-code-generator',
     description: 'Generate QR codes from URLs or text.',
   },
 ];
@@ -194,6 +194,31 @@ export default function TextToSpeech({ onNavigate }: TextToSpeechProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Free Text to Speech — Convert Text to Natural-Sounding Speech Online</h2>
+        <p>Text-to-speech (TTS) technology converts written text into spoken audio, making content accessible to people with visual impairments, reading disabilities, or anyone who prefers listening over reading. Our free online Text to Speech tool uses your browser's built-in Web Speech API to generate natural-sounding speech from any text, with full control over voice selection, speed, pitch, and volume. All processing happens locally on your device.</p>
+        <h3>Accessibility and Inclusive Design</h3>
+        <p>Text-to-speech is a cornerstone of web accessibility. The Web Content Accessibility Guidelines (WCAG) recommend providing text alternatives for non-text content and ensuring content is operable and understandable. TTS tools help people with dyslexia, low vision, cognitive disabilities, and those learning a new language access written content more easily. By offering a speech output option, content creators and educators can reach a broader audience and comply with accessibility regulations like the ADA and Section 508.</p>
+        <h3>Applications of Text-to-Speech Technology</h3>
+        <p>Beyond accessibility, TTS has numerous practical applications. Students use it to review study materials while commuting or exercising. Professionals listen to reports and emails hands-free while multitasking. Language learners practice pronunciation by hearing native-sounding speech. Writers proofread their work by listening to it, catching errors that the eye might miss. Content creators generate voiceovers for videos and podcasts without recording equipment. The Web Speech API makes all of these use cases possible directly in the browser with no software installation.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Multiple voice options including system voices and cloud-based voices (browser dependent)</li>
+          <li>Adjustable speech rate from 0.5x (half speed) to 2.0x (double speed)</li>
+          <li>Pitch control from low (0.5) to high (2.0) for natural-sounding output</li>
+          <li>Volume adjustment from mute to maximum</li>
+          <li>Play, pause, and stop controls for full playback management</li>
+          <li>Estimated speech duration display based on word count and selected rate</li>
+          <li>Support for multiple languages including English, Spanish, French, German, Chinese, Japanese, and more</li>
+        </ul>
+        <h3>Tips for Best Results</h3>
+        <ul>
+          <li>Use Google Chrome for the largest selection of natural-sounding voices</li>
+          <li>Select a Google-branded voice for the most human-like speech quality</li>
+          <li>Set the rate to 0.9x–1.0x for natural pacing when proofreading</li>
+          <li>Use 1.2x–1.5x speed for efficient content consumption when reviewing material</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         {/* Textarea */}

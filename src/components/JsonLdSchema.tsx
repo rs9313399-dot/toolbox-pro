@@ -18,7 +18,7 @@ export default function JsonLdSchema() {
       description: "Free online tools for everyone. No signup required.",
       potentialAction: {
         "@type": "SearchAction",
-        target: "https://toolbox-pro.vercel.app/#/tools",
+        target: "https://toolbox-pro.vercel.app/tools",
         "query-input": "required name=search_term_string",
       },
     };

@@ -614,7 +614,7 @@ export default function BlogPage({ onNavigate }: BlogPageProps) {
 
   const handlePostClick = useCallback(
     (slug: string) => {
-      onNavigate(`#/blog/${slug}`);
+      onNavigate(`/blog/${slug}`);
     },
     [onNavigate]
   );

@@ -39,17 +39,17 @@ const faqItems = [
 const relatedTools = [
   {
     name: 'JSON Formatter',
-    hash: '#/tools/json-formatter',
+    hash: '/tools/json-formatter',
     description: 'Format, validate, and beautify JSON data.',
   },
   {
     name: 'URL Shortener',
-    hash: '#/tools/url-shortener',
+    hash: '/tools/url-shortener',
     description: 'Shorten and manage long URLs.',
   },
   {
     name: 'QR Code Generator',
-    hash: '#/tools/qr-code-generator',
+    hash: '/tools/qr-code-generator',
     description: 'Generate QR codes from URLs or text.',
   },
 ];
@@ -166,6 +166,32 @@ export default function Base64Encoder({ onNavigate }: Base64EncoderProps) {
       faqItems={faqItems}
       relatedTools={relatedTools}
       onNavigate={onNavigate}
+      seoContent={`
+        <h2>Base64 Encoder / Decoder — Encode and Decode Base64 Text and Files</h2>
+        <p>Base64 encoding is a fundamental technique in web development that converts binary data into ASCII text, making it safe to transmit over text-based protocols like HTTP, email, and JSON. Our free online Base64 Encoder and Decoder supports both text encoding/decoding and file encoding with data URI generation. Whether you are embedding images in CSS, encoding API credentials, or converting files for inline transmission, this tool handles it all — completely in your browser with no server processing.</p>
+        <h3>What is Base64 Encoding?</h3>
+        <p>Base64 is a binary-to-text encoding scheme that represents binary data using a set of 64 ASCII characters: A–Z, a–z, 0–9, +, and /. Every 3 bytes of binary data are converted into 4 Base64 characters, which means the encoded output is approximately 33% larger than the input. This overhead is the trade-off for gaining compatibility with systems that can only handle text data. Base64 is defined in RFC 4648 and is one of the most widely used encoding schemes on the internet.</p>
+        <h3>Web Development Use Cases</h3>
+        <p>Base64 encoding has numerous practical applications in web development. Data URIs embed small images directly in HTML or CSS files using Base64, eliminating the need for separate HTTP requests — this is particularly useful for icons, logos, and small UI elements. API authentication often uses Base64 to encode credentials in HTTP Basic Auth headers. Email attachments are encoded in Base64 as part of the MIME standard. JSON Web Tokens (JWTs) use Base64URL encoding for their header, payload, and signature sections. Source maps and configuration files frequently contain Base64-encoded data. Understanding and working with Base64 is an essential skill for any web developer.</p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Text mode — encode plain text to Base64 or decode Base64 back to text</li>
+          <li>File mode — encode any file (images, documents, etc.) to a Base64 data URI</li>
+          <li>Swap button to instantly reverse encode/decode direction</li>
+          <li>Image preview for encoded image files</li>
+          <li>File size display for both input and output</li>
+          <li>One-click copy to clipboard for encoded/decoded results</li>
+          <li>Full Unicode support for international text encoding</li>
+          <li>Complete client-side processing — your data never leaves your device</li>
+        </ul>
+        <h3>Important Security Note</h3>
+        <ul>
+          <li>Base64 is encoding, NOT encryption — it provides zero security or data protection</li>
+          <li>Anyone can decode Base64 data, so never use it to "protect" sensitive information</li>
+          <li>For securing data, use proper encryption algorithms like AES-256 instead</li>
+          <li>Base64 is safe for transmitting data through text-only channels, but does not hide the content</li>
+        </ul>
+      `}
     >
       <div className="space-y-6">
         <Tabs defaultValue="text" className="w-full">
