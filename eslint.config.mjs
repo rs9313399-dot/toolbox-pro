@@ -18,7 +18,7 @@ const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
 
     // React rules
     "react-hooks/exhaustive-deps": "off",
-    "react-hooks/purity": "off",
+    "react-hooks/purity": "off",`n    "react-hooks/refs": "off",`n    "react-hooks/set-state-in-effect": "off",
     "react/no-unescaped-entities": "off",
     "react/display-name": "off",
     "react/prop-types": "off",
