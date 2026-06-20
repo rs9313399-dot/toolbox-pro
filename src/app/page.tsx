@@ -28,7 +28,7 @@ import AboutPage from '@/components/AboutPage';
 import TermsOfService from '@/components/TermsOfService';
 import DisclaimerPage from '@/components/DisclaimerPage';
 import PricingPage from '@/components/PricingPage';
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 /* ────────────────────────────────────────────
    Blog data — shared across listing + detail
    ──────────────────────────────────────────── */
@@ -298,6 +298,7 @@ export default function Home() {
         <Router hash={hash} navigate={navigate} />
       </div>
       <Footer onNavigate={navigate} />
+      <SpeedInsights />
     </div>
   );
 }

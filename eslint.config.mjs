@@ -18,13 +18,13 @@ const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
 
     // React rules
     "react-hooks/exhaustive-deps": "off",
-    "react-hooks/purity": "off",`n    "react-hooks/refs": "off",`n    "react-hooks/set-state-in-effect": "off",
+    "react-hooks/purity": "off",
+    "react-hooks/refs": "off",
+    "react-hooks/set-state-in-effect": "off",
     "react/no-unescaped-entities": "off",
     "react/display-name": "off",
     "react/prop-types": "off",
     "react-compiler/react-compiler": "off",
-    "react-hooks/refs": "off",
-    "react-hooks/set-state-in-effect": "off",
     // Next.js rules
     "@next/next/no-img-element": "off",
     "@next/next/no-html-link-for-pages": "off",
