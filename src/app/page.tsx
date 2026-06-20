@@ -1,12 +1,24 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+// Layout
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+// Pages
 import HomePage from '@/components/HomePage';
 import BlogPage from '@/components/BlogPage';
 import BlogDetailPage from '@/components/BlogDetailPage';
 import ContactPage from '@/components/ContactPage';
+import AboutPage from '@/components/AboutPage';
+import PrivacyPolicy from '@/components/PrivacyPolicy';
+import TermsOfService from '@/components/TermsOfService';
+import DisclaimerPage from '@/components/DisclaimerPage';
+import PricingPage from '@/components/PricingPage';
+
+// Tools
 import PasswordGenerator from '@/components/tools/PasswordGenerator';
 import WordCounter from '@/components/tools/WordCounter';
 import ImageCompressor from '@/components/tools/ImageCompressor';
@@ -23,12 +35,6 @@ import BackgroundRemover from '@/components/tools/BackgroundRemover';
 import JsonFormatter from '@/components/tools/JsonFormatter';
 import Base64Encoder from '@/components/tools/Base64Encoder';
 import ColorGradeTransfer from '@/components/tools/ColorGradeTransfer';
-import PrivacyPolicy from '@/components/PrivacyPolicy';
-import AboutPage from '@/components/AboutPage';
-import TermsOfService from '@/components/TermsOfService';
-import DisclaimerPage from '@/components/DisclaimerPage';
-import PricingPage from '@/components/PricingPage';
-
 /* ────────────────────────────────────────────
    Blog data — shared across listing + detail
    ──────────────────────────────────────────── */
@@ -180,92 +186,91 @@ const blogPosts = [
   },
 ];
 
-function usePathRouter() {
-  const [path, setPath] = useState(
-    typeof window !== 'undefined' ? window.location.pathname : '/'
+function useHashRouter() {
+  const [hash, setHash] = useState(
+    typeof window !== 'undefined' ? window.location.hash || '#/' : '#/'
   );
 
   useEffect(() => {
-    const handlePopState = () => {
-      setPath(window.location.pathname);
+    const handleHashChange = () => {
+      setHash(window.location.hash || '#/');
     };
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const navigate = useCallback((newPath: string) => {
-    window.history.pushState({}, '', newPath);
-    setPath(newPath);
+  const navigate = useCallback((newHash: string) => {
+    window.location.hash = newHash;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  return { path, navigate };
+  return { hash, navigate };
 }
 
-function Router({ path, navigate }: { path: string; navigate: (p: string) => void }) {
-  const route = path || '/';
+function Router({ hash, navigate }: { hash: string; navigate: (h: string) => void }) {
+  const route = hash || '#/';
 
   // Home
-  if (route === '/' || route === '') {
+  if (route === '#/' || route === '#' || route === '') {
     return <HomePage onNavigate={navigate} />;
   }
 
   // Tool pages
-  if (route === '/tools/password-generator') return <PasswordGenerator onNavigate={navigate} />;
-  if (route === '/tools/word-counter') return <WordCounter onNavigate={navigate} />;
-  if (route === '/tools/image-compressor') return <ImageCompressor onNavigate={navigate} />;
-  if (route === '/tools/youtube-thumbnail') return <YouTubeThumbnail onNavigate={navigate} />;
-  if (route === '/tools/instagram-reel') return <InstagramReel onNavigate={navigate} />;
-  if (route === '/tools/image-to-pdf') return <ImageToPdf onNavigate={navigate} />;
-  if (route === '/tools/pdf-to-image') return <PdfToImage onNavigate={navigate} />;
-  if (route === '/tools/qr-code-generator') return <QrCodeGenerator onNavigate={navigate} />;
-  if (route === '/tools/url-shortener') return <UrlShortener onNavigate={navigate} />;
-  if (route === '/tools/text-to-speech') return <TextToSpeech onNavigate={navigate} />;
-  if (route === '/tools/speech-to-text') return <SpeechToText onNavigate={navigate} />;
-  if (route === '/tools/image-resizer') return <ImageResizer onNavigate={navigate} />;
-  if (route === '/tools/background-remover') return <BackgroundRemover onNavigate={navigate} />;
-  if (route === '/tools/json-formatter') return <JsonFormatter onNavigate={navigate} />;
-  if (route === '/tools/base64-encoder') return <Base64Encoder onNavigate={navigate} />;
-  if (route === '/tools/color-grade-transfer') return <ColorGradeTransfer onNavigate={navigate} />;
+  if (route === '#/tools/password-generator') return <PasswordGenerator onNavigate={navigate} />;
+  if (route === '#/tools/word-counter') return <WordCounter onNavigate={navigate} />;
+  if (route === '#/tools/image-compressor') return <ImageCompressor onNavigate={navigate} />;
+  if (route === '#/tools/youtube-thumbnail') return <YouTubeThumbnail onNavigate={navigate} />;
+  if (route === '#/tools/instagram-reel') return <InstagramReel onNavigate={navigate} />;
+  if (route === '#/tools/image-to-pdf') return <ImageToPdf onNavigate={navigate} />;
+  if (route === '#/tools/pdf-to-image') return <PdfToImage onNavigate={navigate} />;
+  if (route === '#/tools/qr-code-generator') return <QrCodeGenerator onNavigate={navigate} />;
+  if (route === '#/tools/url-shortener') return <UrlShortener onNavigate={navigate} />;
+  if (route === '#/tools/text-to-speech') return <TextToSpeech onNavigate={navigate} />;
+  if (route === '#/tools/speech-to-text') return <SpeechToText onNavigate={navigate} />;
+  if (route === '#/tools/image-resizer') return <ImageResizer onNavigate={navigate} />;
+  if (route === '#/tools/background-remover') return <BackgroundRemover onNavigate={navigate} />;
+  if (route === '#/tools/json-formatter') return <JsonFormatter onNavigate={navigate} />;
+  if (route === '#/tools/base64-encoder') return <Base64Encoder onNavigate={navigate} />;
+  if (route === '#/tools/color-grade-transfer') return <ColorGradeTransfer onNavigate={navigate} />;
 
   // Blog listing
-  if (route === '/blog') {
+  if (route === '#/blog') {
     return <BlogPage onNavigate={navigate} />;
   }
 
-  // Blog detail — match /blog/any-slug
-  if (route.startsWith('/blog/')) {
-    const slug = route.replace('/blog/', '');
+  // Blog detail — match #/blog/any-slug
+  if (route.startsWith('#/blog/')) {
+    const slug = route.replace('#/blog/', '');
     return <BlogDetailPage slug={slug} onNavigate={navigate} allPosts={blogPosts} />;
   }
 
   // About
-  if (route === '/about') {
+  if (route === '#/about') {
     return <AboutPage onNavigate={navigate} />;
   }
 
   // Privacy Policy
-  if (route === '/privacy-policy') {
+  if (route === '#/privacy-policy') {
     return <PrivacyPolicy />;
   }
 
   // Terms of Service
-  if (route === '/terms-of-service') {
+  if (route === '#/terms-of-service') {
     return <TermsOfService />;
   }
 
   // Disclaimer
-  if (route === '/disclaimer') {
+  if (route === '#/disclaimer') {
     return <DisclaimerPage />;
   }
 
   // Contact
-  if (route === '/contact') {
+  if (route === '#/contact') {
     return <ContactPage />;
   }
 
   // Pricing
-  if (route === '/pricing') {
+  if (route === '#/pricing') {
     return <PricingPage onNavigate={navigate} />;
   }
 
@@ -279,7 +284,7 @@ function Router({ path, navigate }: { path: string; navigate: (p: string) => voi
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate('#/')}
           className="cta-primary inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-semibold text-sm"
         >
           Go Home
@@ -290,15 +295,16 @@ function Router({ path, navigate }: { path: string; navigate: (p: string) => voi
 }
 
 export default function Home() {
-  const { path, navigate } = usePathRouter();
+  const { hash, navigate } = useHashRouter();
 
   return (
     <div className="min-h-screen flex flex-col bg-black">
-      <Header currentPath={path} onNavigate={navigate} />
+      <Header currentPath={hash} onNavigate={navigate} />
       <div className="flex-1">
-        <Router path={path} navigate={navigate} />
+        <Router hash={hash} navigate={navigate} />
       </div>
       <Footer onNavigate={navigate} />
+      <SpeedInsights />
     </div>
   );
 }
